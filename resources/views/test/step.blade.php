@@ -1,55 +1,71 @@
-<!DOCTYPE html>
-<html>
+@extends('layouts.app')
 
-<head>
-    <title>Test DASS</title>
-</head>
+@section('content')
+    <div class="flex justify-center items-center min-h-[80vh]">
 
-<body style="font-family:sans-serif; text-align:center;">
+        <div class="bg-gray-200 rounded-[40px] px-10 py-8 w-full max-w-2xl text-center">
 
-    <h4>Pertanyaan {{ $step }}/{{ $total }}</h4>
+            <!-- STEP -->
+            <p class="text-sm font-bold text-black-500 mb-2">
+                Pertanyaan {{ $step }}/{{ $total }}
+            </p>
 
-    <h2>{{ $question->text }}</h2>
+            <!-- QUESTION -->
+            <h2 class="text-lg font-medium mb-6">
+                {{ $question->text }}
+            </h2>
 
-    <form method="POST" action="{{ route('tes.submit', $step) }}">
-        @csrf
+            <!-- FORM -->
+            <form method="POST" action="{{ route('tes.submit', $step) }}">
+                @csrf
+                <input type="hidden" name="question_id" value="{{ $question->id }}">
 
-        <input type="hidden" name="question_id" value="{{ $question->id }}">
+                <div class="flex flex-col gap-4">
 
-        <div style="margin: 20px;">
-            <label>
-                <input type="radio" name="value" value="0" required>
-                Tidak Sama Sekali
-            </label>
+                    @foreach ([
+            0 => 'Tidak Sama Sekali',
+            1 => 'Sampai di Tingkat Tertentu',
+            2 => 'Lumayan Sering',
+            3 => 'Sangat Sesuai',
+        ] as $val => $label)
+                        <label class="block cursor-pointer">
+                            <input type="radio" name="value" value="{{ $val }}" class="hidden peer">
+
+                            <div
+                                class="bg-white py-4 rounded-full shadow-sm 
+                                peer-checked:bg-indigo-500 
+                                peer-checked:text-white 
+                                transition">
+                                {{ $label }}
+                            </div>
+                        </label>
+                    @endforeach
+
+                </div>
+
+                <!-- BUTTON -->
+                <button type="submit"
+                    class="mt-6 px-6 py-3 bg-indigo-600 text-white rounded-full 
+                       opacity-50 cursor-not-allowed"
+                    id="btnNext" disabled>
+                    Selanjutnya
+                </button>
+
+            </form>
+
         </div>
 
-        <div style="margin: 20px;">
-            <label>
-                <input type="radio" name="value" value="1">
-                Sampai di Tingkat Tertentu
-            </label>
-        </div>
+    </div>
 
-        <div style="margin: 20px;">
-            <label>
-                <input type="radio" name="value" value="2">
-                Lumayan Sering
-            </label>
-        </div>
+    <script>
+        const radios = document.querySelectorAll('input[name="value"]');
+        const btn = document.getElementById('btnNext');
 
-        <div style="margin: 20px;">
-            <label>
-                <input type="radio" name="value" value="3">
-                Sangat Sesuai
-            </label>
-        </div>
-
-        <br>
-
-        <button type="submit">Selanjutnya</button>
-
-    </form>
-
-</body>
-
-</html>
+        radios.forEach(r => {
+            r.addEventListener('change', () => {
+                btn.disabled = false;
+                btn.classList.remove('opacity-50', 'cursor-not-allowed');
+            });
+        });
+    </script>
+@endsection

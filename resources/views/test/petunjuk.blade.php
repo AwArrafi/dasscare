@@ -85,7 +85,7 @@
             <a href="/tes/1"
                 class="block text-center mt-8 py-4 rounded-full 
                   bg-gradient-to-r from-indigo-400 to-indigo-600 
-                  text-white font-semibold tracking-wide
+                  text-black font-bold tracking-wide
                   shadow-md hover:opacity-90 transition">
                 MULAI TES SEKARANG
             </a>

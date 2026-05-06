@@ -13,3 +13,5 @@ Route::get('/petunjuk', function () {
 
 Route::get('/tes/{step}', [TestController::class, 'index']);
 Route::post('/tes/{step}', [TestController::class, 'submit'])->name('tes.submit');
+
+Route::get('/hasil', [TestController::class, 'hasil']);
