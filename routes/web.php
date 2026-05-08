@@ -15,3 +15,6 @@ Route::get('/tes/{step}', [TestController::class, 'index']);
 Route::post('/tes/{step}', [TestController::class, 'submit'])->name('tes.submit');
 
 Route::get('/hasil', [TestController::class, 'hasil']);
+
+Route::get('/riwayat', [TestController::class, 'riwayat']);
+Route::get('/hasil/{id}', [TestController::class, 'detailHasil']);

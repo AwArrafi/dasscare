@@ -30,18 +30,24 @@
                     <!-- DEPRESI -->
                     <div class="relative mb-12">
 
-                        <!-- BAR -->
-                        <div class="{{ $warnaDepresi }} rounded-lg px-4 py-3 flex justify-between items-center">
+                        <!-- BACKGROUND TRACK -->
+                        <div class="bg-gray-200 rounded-lg overflow-hidden">
 
-                            <div class="flex items-center gap-3">
+                            <!-- BAR -->
+                            <div class="{{ $warnaDepresi }} rounded-lg px-4 py-3 flex justify-between items-center animate-bar"
+                                style="width: {{ $widthDepresi }};">
 
-                                <span class="font-bold">
-                                    {{ $depresi }}
-                                </span>
+                                <div class="flex items-center gap-3">
 
-                                <span>
-                                    Depresi ({{ $kategoriDepresi }})
-                                </span>
+                                    <span class="font-bold">
+                                        {{ $depresi }}
+                                    </span>
+
+                                    <span>
+                                        Depresi ({{ $kategoriDepresi }})
+                                    </span>
+
+                                </div>
 
                             </div>
 
@@ -52,46 +58,66 @@
 
                     </div>
 
+
                     <!-- ANXIETY -->
-                    <div class=" relative mb-12">
-                        <div class="{{ $warnaAnxiety }} rounded-lg px-4 py-3 flex justify-between items-center">
+                    <div class="relative mb-12">
 
-                            <div class="flex items-center gap-3">
+                        <!-- BACKGROUND TRACK -->
+                        <div class="bg-gray-200 rounded-lg overflow-hidden">
 
-                                <span class="font-bold">
-                                    {{ $anxiety }}
-                                </span>
+                            <!-- BAR -->
+                            <div class="{{ $warnaAnxiety }} rounded-lg px-4 py-3 flex justify-between items-center animate-bar"
+                                style="width: {{ $widthAnxiety }};">
 
-                                <span>
-                                    Kecemasan ({{ $kategoriAnxiety }})
-                                </span>
+                                <div class="flex items-center gap-3">
+
+                                    <span class="font-bold">
+                                        {{ $anxiety }}
+                                    </span>
+
+                                    <span>
+                                        Kecemasan ({{ $kategoriAnxiety }})
+                                    </span>
+
+                                </div>
 
                             </div>
 
                         </div>
 
+                        <!-- FLOATING EMOJI -->
                         <img src="{{ $emojiAnxiety }}" class="w-20 absolute -right-6 -top-5">
 
                     </div>
 
                     <!-- STRESS -->
+                    <!-- STRESS -->
                     <div class="relative mb-7">
-                        <div class="{{ $warnaStress }} rounded-lg px-4 py-3 flex justify-between items-center">
 
-                            <div class="flex items-center gap-3">
+                        <!-- BACKGROUND TRACK -->
+                        <div class="bg-gray-200 rounded-lg overflow-hidden">
 
-                                <span class="font-bold">
-                                    {{ $stress }}
-                                </span>
+                            <!-- BAR -->
+                            <div class="{{ $warnaStress }} rounded-lg px-4 py-3 flex justify-between items-center animate-bar"
+                                style="width: {{ $widthStress }};">
 
-                                <span>
-                                    Stress ({{ $kategoriStress }})
-                                </span>
+                                <div class="flex items-center gap-3">
+
+                                    <span class="font-bold">
+                                        {{ $stress }}
+                                    </span>
+
+                                    <span>
+                                        Stress ({{ $kategoriStress }})
+                                    </span>
+
+                                </div>
 
                             </div>
 
                         </div>
 
+                        <!-- FLOATING EMOJI -->
                         <img src="{{ $emojiStress }}" class="w-20 absolute -right-6 -top-5">
 
                     </div>
@@ -105,7 +131,7 @@
                         Rekomendasi Self-Care
                     </h2>
 
-                    <div class="space-y-9 mt-10">
+                    <div class="space-y-10 mt-9">
 
                         <div>
                             <p class="text-lg">
@@ -146,7 +172,7 @@
             <!-- BUTTON -->
             <div class="flex justify-center gap-10 mt-10">
 
-                <a href="#" class="bg-indigo-600 text-white px-8 py-3 rounded-xl">
+                <a href="/riwayat" class="bg-indigo-600 text-white px-8 py-3 rounded-xl">
                     Riwayat Tes
                 </a>
 
@@ -159,4 +185,21 @@
         </div>
 
     </div>
+
+    <style>
+        @keyframes slideBar {
+            from {
+                transform: scaleX(0);
+            }
+
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        .animate-bar {
+            animation: slideBar 1s ease forwards;
+            transform-origin: left;
+        }
+    </style>
 @endsection

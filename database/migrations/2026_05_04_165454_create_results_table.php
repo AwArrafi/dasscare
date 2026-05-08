@@ -12,13 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('results', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('test_session_id')->constrained()->cascadeOnDelete();
 
+            $table->id();
+
+            // RELASI KE TEST SESSION
+            $table->foreignId('test_session_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
+            // SCORE
             $table->integer('score_depression');
             $table->integer('score_anxiety');
             $table->integer('score_stress');
 
+            // CATEGORY
             $table->string('category_depression');
             $table->string('category_anxiety');
             $table->string('category_stress');
