@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,3 +19,6 @@ Route::get('/hasil', [TestController::class, 'hasil']);
 
 Route::get('/riwayat', [TestController::class, 'riwayat']);
 Route::get('/hasil/{id}', [TestController::class, 'detailHasil']);
+
+Route::get('/profile', [ProfileController::class, 'index']);
+Route::post('/profile/update', [ProfileController::class, 'update']);

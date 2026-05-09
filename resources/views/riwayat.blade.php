@@ -3,7 +3,7 @@
 @section('content')
     <!-- BACK BUTTON -->
     <a href="javascript:history.back()"
-        class="absolute top-24 left-16
+        class="absolute top-30 left-16
           inline-flex items-center justify-center
           w-9 h-9 rounded-full
           border border-gray-300
@@ -13,7 +13,6 @@
           transition">
 
         ←
-
     </a>
 
     <div class="max-w-5xl mx-auto py-10 px-6">
@@ -49,6 +48,49 @@
 
                 </a>
             @endforeach
+
+        </div>
+
+        <div class="flex justify-center items-center gap-3 mt-10">
+
+            {{-- PREVIOUS --}}
+            @if ($results->onFirstPage())
+                <span class="px-4 py-2 rounded-xl bg-gray-200 text-gray-400">
+                    Sebelumnya
+                </span>
+            @else
+                <a href="{{ $results->previousPageUrl() }}"
+                    class="px-4 py-2 rounded-xl bg-indigo-500 text-white
+                  hover:bg-indigo-600 transition">
+
+                    Sebelumnya
+
+                </a>
+            @endif
+
+
+            {{-- PAGE NUMBER --}}
+            <span class="px-4 py-2 text-gray-600 font-medium">
+
+                Halaman {{ $results->currentPage() }}
+
+            </span>
+
+
+            {{-- NEXT --}}
+            @if ($results->hasMorePages())
+                <a href="{{ $results->nextPageUrl() }}"
+                    class="px-4 py-2 rounded-xl bg-indigo-500 text-white
+                  hover:bg-indigo-600 transition">
+
+                    Selanjutnya
+
+                </a>
+            @else
+                <span class="px-4 py-2 rounded-xl bg-gray-200 text-gray-400">
+                    Selanjutnya
+                </span>
+            @endif
 
         </div>
 

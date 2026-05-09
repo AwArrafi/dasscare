@@ -1,7 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="max-w-7xl mx-auto py-10 px-6">
+    {{-- <!-- BACK TO HOME -->
+    <div class="px-16 mt-2 mb-6">
+
+        <a href="/"
+            class="inline-flex items-center gap-3
+              text-black
+              hover:text-indigo-600
+              transition">
+
+            <span class="text-2xl">
+                ←
+            </span>
+
+            <span class="text-lg font-medium">
+                Kembali Ke Halaman Utama
+            </span>
+
+        </a>
+
+    </div> --}}
+
+    <div class="max-w-7xl mx-auto py-9 px-6">
 
         <!-- TITLE -->
         <div class="text-center mb-8">

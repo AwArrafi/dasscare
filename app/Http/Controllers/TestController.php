@@ -212,7 +212,7 @@ class TestController extends Controller
 
     public function riwayat()
     {
-        $results = Result::latest()->get();
+        $results = Result::latest()->simplePaginate(10);
 
         return view('riwayat', compact('results'));
     }

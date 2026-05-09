@@ -4,7 +4,7 @@
     <!-- BACK BUTTON -->
     @if ($step > 1)
         <a href="/tes/{{ $step - 1 }}"
-            class="absolute top-24 left-16
+            class="absolute top-30 left-16
               inline-flex items-center justify-center
               w-9 h-9 rounded-full
               border border-gray-300
