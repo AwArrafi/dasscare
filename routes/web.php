@@ -3,22 +3,69 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AuthController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/*
+|--------------------------------------------------------------------------
+| AUTH
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::post('/logout', [AuthController::class, 'logout']);
+
+/*
+|--------------------------------------------------------------------------
+| PUBLIC
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/petunjuk', function () {
     return view('test.petunjuk');
 });
 
-Route::get('/tes/{step}', [TestController::class, 'index']);
-Route::post('/tes/{step}', [TestController::class, 'submit'])->name('tes.submit');
+/*
+|--------------------------------------------------------------------------
+| USER AUTH
+|--------------------------------------------------------------------------
+*/
 
-Route::get('/hasil', [TestController::class, 'hasil']);
+Route::middleware('auth')->group(function () {
 
-Route::get('/riwayat', [TestController::class, 'riwayat']);
-Route::get('/hasil/{id}', [TestController::class, 'detailHasil']);
+    // HOME
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
-Route::get('/profile', [ProfileController::class, 'index']);
-Route::post('/profile/update', [ProfileController::class, 'update']);
+    // TEST
+    Route::get('/tes/{step}', [TestController::class, 'index']);
+    Route::post('/tes/{step}', [TestController::class, 'submit'])
+        ->name('tes.submit');
+
+    // HASIL
+    Route::get('/hasil', [TestController::class, 'hasil']);
+    Route::get('/hasil/{id}', [TestController::class, 'detailHasil']);
+
+    // RIWAYAT
+    Route::get('/riwayat', [TestController::class, 'riwayat']);
+
+    // PROFILE
+    Route::get('/profile', [ProfileController::class, 'index']);
+    Route::post('/profile/update', [ProfileController::class, 'update']);
+});
+
+/*
+|--------------------------------------------------------------------------
+| ADMIN
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/admin', function () {
+
+        return view('admin.dashboard');
+    });
+});

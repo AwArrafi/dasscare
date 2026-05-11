@@ -28,7 +28,11 @@
 </head>
 
 <body class="bg-white font-sans">
-    <x-navbar />
+
+    @if (!request()->is('login') && !request()->is('register'))
+        <x-navbar />
+    @endif
+
     @yield('content')
 
 </body>

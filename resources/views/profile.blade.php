@@ -208,17 +208,20 @@
 
                         </button>
 
-                        <button
-                            class="px-6 py-3 rounded-xl
+                        <form action="/logout" method="POST">
+                            @csrf
+                            <button
+                                class="px-6 py-3 rounded-xl
                                bg-red-500 text-white
                                font-medium
                                hover:bg-red-600
                                hover:-translate-y-1
                                transition-all duration-300">
 
-                            Logout
+                                Logout
 
-                        </button>
+                            </button>
+                        </form>
 
                     </div>
 

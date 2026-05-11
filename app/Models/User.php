@@ -19,7 +19,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'gender'
+        'gender',
+        'role'
     ];
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
