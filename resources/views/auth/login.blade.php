@@ -72,22 +72,34 @@
 
                         <div class="relative mt-2">
 
-                            <input type="password" name="password" placeholder="Masukkan Kata Sandi"
+                            <input type="password" name="password" id="password" placeholder="Masukkan Kata Sandi"
                                 class="w-full px-4 py-3
-                                      rounded-xl
-                                      bg-gray-100
-                                      border border-transparent
-                                      focus:outline-none
-                                      focus:ring-2
-                                      focus:ring-indigo-400
-                                      transition">
+                  rounded-xl
+                  bg-gray-100
+                  border border-transparent
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-indigo-400
+                  transition">
 
-                            <!-- EYE ICON -->
-                            <span class="absolute right-4 top-3.5 text-gray-400">
+                            <!-- EYE BUTTON -->
+                            <button type="button" id="togglePassword"
+                                class="absolute right-4 top-3.5 text-gray-400 hover:text-indigo-500 transition">
 
-                                👁
+                                <!-- EYE OPEN -->
+                                <svg id="eyeOpen" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
 
-                            </span>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5
+                         c4.477 0 8.268 2.943 9.542 7
+                         -1.274 4.057-5.065 7-9.542 7
+                         -4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+
+                            </button>
 
                         </div>
 
@@ -145,4 +157,69 @@
         </div>
 
     </div>
+
+    <script>
+        const passwordInput = document.getElementById('password');
+        const togglePassword = document.getElementById('togglePassword');
+
+        togglePassword.addEventListener('click', function() {
+
+            const type =
+                passwordInput.getAttribute('type') === 'password' ?
+                'text' :
+                'password';
+
+            passwordInput.setAttribute('type', type);
+
+            // TOGGLE STRIKE
+            if (type === 'text') {
+
+                this.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="w-5 h-5"
+                     fill="none"
+                     viewBox="0 0 24 24"
+                     stroke="currentColor">
+
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M13.875 18.825A10.05 10.05 0 0112 19
+                             c-4.478 0-8.268-2.943-9.543-7
+                             a9.97 9.97 0 012.223-3.592M6.228 6.228
+                             A9.956 9.956 0 0112 5
+                             c4.478 0 8.268 2.943 9.543 7
+                             a9.97 9.97 0 01-4.293 5.774M15 12
+                             a3 3 0 11-6 0 3 3 0 016 0zm6 6L3 3"/>
+                </svg>
+            `;
+
+            } else {
+
+                this.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     class="w-5 h-5"
+                     fill="none"
+                     viewBox="0 0 24 24"
+                     stroke="currentColor">
+
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M2.458 12C3.732 7.943 7.523 5 12 5
+                             c4.477 0 8.268 2.943 9.542 7
+                             -1.274 4.057-5.065 7-9.542 7
+                             -4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+            `;
+
+            }
+
+        });
+    </script>
 @endsection

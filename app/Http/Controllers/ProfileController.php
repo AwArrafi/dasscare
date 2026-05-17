@@ -13,6 +13,13 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
+        // ADMIN
+        if ($user->role == 'admin') {
+
+            return view('admin.profile', compact('user'));
+        }
+
+        // USER BIASA
         return view('profile', compact('user'));
     }
 

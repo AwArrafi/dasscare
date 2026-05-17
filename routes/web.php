@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\AdminResultController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,6 @@ use App\Http\Controllers\AuthController;
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
-
 Route::post('/logout', [AuthController::class, 'logout']);
 
 /*
@@ -62,10 +62,18 @@ Route::middleware('auth')->group(function () {
 |--------------------------------------------------------------------------
 */
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'admin'])
+    ->prefix('admin')
+    ->group(function () {
 
-    Route::get('/admin', function () {
+        Route::get('/', function () {
 
-        return view('admin.dashboard');
+            return view('admin.dashboard');
+        });
+
+        // DATA RIWAYAT
+        Route::get('/results', [AdminResultController::class, 'index']);
+
+        // DETAIL
+        Route::get('/results/{id}', [AdminResultController::class, 'show']);
     });
-});
