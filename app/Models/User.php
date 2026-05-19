@@ -16,11 +16,18 @@ class User extends Authenticatable
 {
 
     protected $fillable = [
+
         'name',
         'email',
         'password',
+
         'gender',
+        'job',
+        'city',
+        'phone',
+
         'role'
+
     ];
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
@@ -36,5 +43,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function results()
+    {
+        return $this->hasMany(Result::class);
     }
 }

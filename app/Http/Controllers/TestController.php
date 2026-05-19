@@ -6,6 +6,7 @@ use App\Models\Question;
 use App\Models\Result;
 use App\Models\TestSession;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TestController extends Controller
 {
@@ -58,6 +59,8 @@ class TestController extends Controller
 
     public function hasil()
     {
+
+
         $answers = session('answers', []);
 
         $depresiQuestions = [3, 5, 10, 13, 16, 17, 21];
@@ -114,7 +117,9 @@ class TestController extends Controller
             $result = Result::firstOrCreate(
 
                 [
-                    'test_session_id' => session('test_session_id')
+                    'test_session_id' => session('test_session_id'),
+
+                    'user_id' => Auth::id(),
                 ],
 
                 [

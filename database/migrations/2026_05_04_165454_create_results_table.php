@@ -15,6 +15,10 @@ return new class extends Migration
 
             $table->id();
 
+            $table->foreignId('user_id')
+                ->constrained()
+                ->cascadeOnDelete();
+
             // RELASI KE TEST SESSION
             $table->foreignId('test_session_id')
                 ->constrained()

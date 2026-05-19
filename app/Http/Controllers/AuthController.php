@@ -4,12 +4,65 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
     public function showLogin()
     {
         return view('auth.login');
+    }
+
+    public function showRegister()
+    {
+        return view('auth.register');
+    }
+
+    public function register(Request $request)
+    {
+        $validated = $request->validate([
+
+            'name' => ['required'],
+
+            'email' => ['required', 'email', 'unique:users'],
+
+            'password' => ['required', 'confirmed', 'min:6'],
+
+            'gender' => ['required'],
+
+            'job' => ['required'],
+
+            'city' => ['required'],
+
+            'phone' => ['required'],
+
+        ]);
+
+        $user = User::create([
+
+            'name' => $validated['name'],
+
+            'email' => $validated['email'],
+
+            'password' => Hash::make($validated['password']),
+
+            'gender' => $validated['gender'],
+
+            'job' => $validated['job'],
+
+            'city' => $validated['city'],
+
+            'phone' => $validated['phone'],
+
+            'role' => 'user',
+
+        ]);
+
+        // AUTO LOGIN
+        Auth::login($user);
+
+        return redirect('/');
     }
 
     public function login(Request $request)

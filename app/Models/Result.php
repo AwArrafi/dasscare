@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\User;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Result extends Model
 {
     protected $fillable = [
+        'user_id',
+
         'test_session_id',
 
         'score_depression',
@@ -17,4 +21,9 @@ class Result extends Model
         'category_anxiety',
         'category_stress',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -23,8 +23,8 @@
                     <tr class="text-left text-black-500 text-sm">
 
                         <th class="px-6 py-5">ID</th>
+                        <th class="px-6 py-5 text-left">Nama</th>
                         <th class="px-6 py-5">Tanggal</th>
-
                         <th class="px-6 py-5">D/KET</th>
                         <th class="px-6 py-5">A/KET</th>
                         <th class="px-6 py-5">S/KET</th>
@@ -49,6 +49,14 @@
                             <td class="px-6 py-5">
 
                                 {{ str_pad($result->id, 5, '0', STR_PAD_LEFT) }}
+
+                            </td>
+
+                            {{-- Name --}}
+
+                            <td class="px-6 py-6">
+
+                                {{ $result->user->name }}
 
                             </td>
 

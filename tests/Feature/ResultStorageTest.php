@@ -36,6 +36,10 @@ class ResultStorageTest extends TestCase
 
         ];
 
+
+        $user = User::factory()->create();
+
+        $this->actingAs($user);
         // HIT ROUTE HASIL
         $this->withSession([
 
@@ -51,5 +55,35 @@ class ResultStorageTest extends TestCase
             'score_depression' => 42,
 
         ]);
+    }
+
+    public function test_result_belongs_to_user(): void
+    {
+        // USER
+        $user = User::factory()->create();
+
+        $session = TestSession::create();
+
+        // RESULT
+        $result = Result::create([
+
+            'user_id' => $user->id,
+
+            'test_session_id' => $session->id,
+
+            'score_depression' => 10,
+            'score_anxiety' => 8,
+            'score_stress' => 12,
+
+            'category_depression' => 'Ringan',
+            'category_anxiety' => 'Normal',
+            'category_stress' => 'Normal',
+
+        ]);
+        // ASSERT
+        $this->assertEquals(
+            $user->id,
+            $result->user->id
+        );
     }
 }

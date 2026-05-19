@@ -35,14 +35,9 @@
 
                     <!-- DASHBOARD -->
                     <a href="/admin"
-                        class="flex items-center gap-3
-                               px-4 py-3 rounded-xl
-                               bg-indigo-600 text-white
-                               font-medium
-                               shadow-sm
-                               hover:bg-indigo-700
-                               transition">
+                        class="block px-5 py-4 rounded-2xl transition font-medium
 
+   {{ request()->is('admin') ? 'bg-indigo-600 text-white shadow' : 'text-gray-700 hover:bg-gray-100' }}">
 
                         Dashboard
 
@@ -50,13 +45,9 @@
 
                     <!-- RIWAYAT -->
                     <a href="/admin/results"
-                        class="flex items-center gap-3
-                               px-4 py-3 rounded-xl
-                               text-gray-600
-                               hover:bg-indigo-50
-                               hover:text-indigo-600
-                               transition">
+                        class="block px-5 py-4 rounded-2xl transition font-medium
 
+   {{ request()->is('admin/results*') ? 'bg-indigo-600 text-white shadow' : 'text-gray-700 hover:bg-gray-100' }}">
 
                         Data Riwayat Tes
 
@@ -64,18 +55,13 @@
 
                     <!-- SELF CARE -->
                     <a href="#"
-                        class="flex items-center gap-3
-                               px-4 py-3 rounded-xl
-                               text-gray-600
-                               hover:bg-indigo-50
-                               hover:text-indigo-600
-                               transition">
+                        class="block px-5 py-4 rounded-2xl transition font-medium
 
+   {{ request()->is('admin/selfcare*') ? 'bg-indigo-600 text-white shadow' : 'text-gray-700 hover:bg-gray-100' }}">
 
                         Self-Care
 
                     </a>
-
                 </div>
 
             </nav>
