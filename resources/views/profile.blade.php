@@ -27,6 +27,33 @@
 
         </a>
 
+
+        @if (session('success'))
+            <div id="success-alert"
+                class="fixed top-6 right-6 z-50
+               bg-green-500 text-white
+               px-6 py-4 rounded-2xl
+               shadow-2xl
+               transition-all duration-500">
+
+                {{ session('success') }}
+
+            </div>
+
+            <script>
+                setTimeout(() => {
+                    const alert = document.getElementById('success-alert');
+
+                    alert.classList.add('opacity-0', 'translate-y-2');
+
+                    setTimeout(() => {
+                        alert.remove();
+                    }, 500);
+
+                }, 2500);
+            </script>
+        @endif
+
         <!-- TOP BANNER -->
         <div
             class="w-full rounded-[30px]
@@ -73,7 +100,7 @@
                     <div>
 
                         <h2 class="text-xl font-semibold">
-                            Rafi
+                            {{ auth()->user()->username }}
                         </h2>
 
                         <p class="text-gray-500 text-sm">
@@ -130,7 +157,11 @@
             </div>
 
             <!-- RIGHT -->
-            <div class="md:col-span-2">
+            <!-- FORM UPDATE PROFILE -->
+            <form action="{{ route('profile.update') }}" method="POST">
+
+                @csrf
+                @method('PUT')
 
                 <div class="space-y-6">
 
@@ -141,7 +172,7 @@
                             Username
                         </label>
 
-                        <input type="text" value="Rafi"
+                        <input type="text" name="username" value="{{ auth()->user()->username }}"
                             class="w-full rounded-xl bg-gray-100
                                   border border-transparent
                                   px-4 py-3
@@ -159,7 +190,7 @@
                             Gender
                         </label>
 
-                        <select
+                        <select name="gender"
                             class="w-full rounded-xl bg-gray-100
                                border border-transparent
                                px-4 py-3
@@ -168,8 +199,13 @@
                                focus:ring-indigo-400
                                transition">
 
-                            <option>Laki-laki</option>
-                            <option>Perempuan</option>
+                            <option value="Laki-laki" {{ auth()->user()->gender == 'Laki-laki' ? 'selected' : '' }}>
+                                Laki-laki
+                            </option>
+
+                            <option value="Perempuan" {{ auth()->user()->gender == 'Perempuan' ? 'selected' : '' }}>
+                                Perempuan
+                            </option>
 
                         </select>
 
@@ -182,7 +218,7 @@
                             Password
                         </label>
 
-                        <input type="password" placeholder="Ubah Password"
+                        <input type="password" name="password" placeholder="Kosongkan jika tidak ingin mengubah password"
                             class="w-full rounded-xl bg-gray-100
                                   border border-transparent
                                   px-4 py-3
@@ -196,7 +232,8 @@
                     <!-- BUTTON -->
                     <div class="flex gap-4 pt-4">
 
-                        <button
+                        <!-- EDIT -->
+                        <button type="submit"
                             class="px-6 py-3 rounded-xl
                                bg-blue-500 text-white
                                font-medium
@@ -208,28 +245,34 @@
 
                         </button>
 
-                        <form action="/logout" method="POST">
-                            @csrf
-                            <button
-                                class="px-6 py-3 rounded-xl
+            </form>
+
+            <!-- LOGOUT -->
+            <form action="/logout" method="POST">
+
+                @csrf
+
+                <button
+                    class="px-6 py-3 rounded-xl
                                bg-red-500 text-white
                                font-medium
                                hover:bg-red-600
                                hover:-translate-y-1
                                transition-all duration-300">
 
-                                Logout
+                    Logout
 
-                            </button>
-                        </form>
+                </button>
 
-                    </div>
-
-                </div>
-
-            </div>
-
+            </form>
         </div>
+
+    </div>
+
+    </div>
+    </form>
+
+    </div>
 
     </div>
 @endsection

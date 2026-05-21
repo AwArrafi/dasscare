@@ -29,13 +29,21 @@
                 <!-- TITLE -->
                 <div class="mb-8">
 
-                    <h2 class="text-3xl font-bold text-gray-800 mb-2">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-2">
                         Senang bertemu anda lagi
                     </h2>
 
-                    <p class="text-gray-400">
+                    <p class="text-gray-500 mb-6">
                         Login untuk melanjutkan
                     </p>
+
+                    @if (session('success'))
+                        <div class="mb-6 rounded-2xl bg-green-50 border border-green-200 text-green-700 px-5 py-4 text-sm">
+
+                            {{ session('success') }}
+
+                        </div>
+                    @endif
 
                 </div>
 
@@ -47,11 +55,11 @@
                     <!-- USERNAME -->
                     <div>
 
-                        <label class="text-sm text-gray-500">
-                            Username
-                        </label>
+                        <labl class="text-sm text-gray-500">
+                            E-Mail
+                        </labl>
 
-                        <input type="text" name="email" placeholder="Masukkan Username"
+                        <input type="text" name="email" placeholder="Masukkan E-Mail"
                             class="w-full mt-2 px-4 py-3
                                   rounded-xl
                                   bg-gray-100
@@ -94,9 +102,9 @@
                                         d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5
-                         c4.477 0 8.268 2.943 9.542 7
-                         -1.274 4.057-5.065 7-9.542 7
-                         -4.477 0-8.268-2.943-9.542-7z" />
+                                                     c4.477 0 8.268 2.943 9.542 7
+                                                     -1.274 4.057-5.065 7-9.542 7
+                                                     -4.477 0-8.268-2.943-9.542-7z" />
                                 </svg>
 
                             </button>

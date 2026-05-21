@@ -27,7 +27,9 @@ class AuthController extends Controller
 
             'email' => ['required', 'email', 'unique:users'],
 
-            'password' => ['required', 'confirmed', 'min:6'],
+            'password' => ['required', 'confirmed', 'min:8'],
+
+            'username' => ['required', 'unique:users', 'max:255'],
 
             'gender' => ['required'],
 
@@ -35,7 +37,7 @@ class AuthController extends Controller
 
             'city' => ['required'],
 
-            'phone' => ['required'],
+            'phone' => ['required', 'min:10'],
 
         ]);
 
@@ -46,6 +48,8 @@ class AuthController extends Controller
             'email' => $validated['email'],
 
             'password' => Hash::make($validated['password']),
+
+            'username' => $validated['username'],
 
             'gender' => $validated['gender'],
 
@@ -59,10 +63,8 @@ class AuthController extends Controller
 
         ]);
 
-        // AUTO LOGIN
-        Auth::login($user);
-
-        return redirect('/');
+        return redirect('/login')
+            ->with('success', 'Registrasi berhasil, silakan login.');
     }
 
     public function login(Request $request)

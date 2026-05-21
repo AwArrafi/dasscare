@@ -36,12 +36,8 @@
 
                     <div class="flex items-center gap-4">
 
-                        <span class="text-xl">
-                            ⏺
-                        </span>
-
                         <h2 class="font-semibold text-lg">
-                            {{ $result->created_at->format('d F Y') }}
+                            Riwayat Tes {{ $result->created_at->format('d F Y') }}
                         </h2>
 
                     </div>

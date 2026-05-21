@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -25,17 +25,23 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
-        $user = User::find(Auth::id());
+        $user = Auth::user();
 
         $request->validate([
-            'name' => 'required',
-            'gender' => 'nullable'
+            'username' => 'required|string|max:255',
+            'gender' => 'required',
         ]);
 
-        $user->update([
-            'name' => $request->name,
-            'gender' => $request->gender,
-        ]);
+        $user->username = $request->username;
+        $user->gender = $request->gender;
+
+        // kalau password diisi
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
+
+        /** @var User $user */
+        $user->save();
 
         return back()->with('success', 'Profile berhasil diperbarui');
     }

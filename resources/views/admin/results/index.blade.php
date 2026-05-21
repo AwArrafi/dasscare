@@ -118,7 +118,7 @@
         </div>
 
         <!-- PAGINATION -->
-        <div class="mt-8">
+        <div class="mt-8 flex justify-center">
 
             {{ $results->links() }}
 

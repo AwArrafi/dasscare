@@ -7,13 +7,15 @@ use App\Models\Result;
 use App\Models\TestSession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Session;
 
 class TestController extends Controller
 {
     public function index($step)
     {
 
-        if (!session()->has('test_session_id')) {
+        if (!Session::has('test_session_id')) {
 
             $testSession = TestSession::create();
 
@@ -39,7 +41,8 @@ class TestController extends Controller
 
     public function submit(Request $request, $step)
     {
-        $answers = session()->get('answers', []);
+
+        $answers = Session::get('answers', []);
 
         $answers[$step] = $request->value;
 
@@ -60,8 +63,8 @@ class TestController extends Controller
     public function hasil()
     {
 
-
-        $answers = session('answers', []);
+        /** @var array $answers */
+        $answers = Session::get('answers', []);
 
         $depresiQuestions = [3, 5, 10, 13, 16, 17, 21];
         $anxietyQuestions = [2, 4, 7, 9, 15, 19, 20];
@@ -217,11 +220,15 @@ class TestController extends Controller
 
     public function riwayat()
     {
-        $results = Result::latest()->simplePaginate(10);
+        /** @var User $user */
+        $user = Auth::user();
+
+        $results = $user->results()
+            ->latest()
+            ->simplePaginate(8);
 
         return view('riwayat', compact('results'));
     }
-
     public function detailHasil($id)
     {
         $result = Result::findOrFail($id);

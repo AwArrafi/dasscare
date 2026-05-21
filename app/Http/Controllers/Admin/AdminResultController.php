@@ -10,7 +10,7 @@ class AdminResultController extends Controller
 {
     public function index()
     {
-        $results = Result::with('user')->latest()->paginate(10);
+        $results = Result::with('user')->latest()->paginate(5);
 
         return view('admin.results.index', compact('results'));
     }

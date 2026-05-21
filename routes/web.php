@@ -79,3 +79,12 @@ Route::middleware(['auth', 'admin'])
         // DETAIL
         Route::get('/results/{id}', [AdminResultController::class, 'show']);
     });
+
+/*
+|--------------------------------------------------------------------------
+| PROFILE
+|--------------------------------------------------------------------------
+*/
+
+Route::put('/profile/update', [ProfileController::class, 'update'])
+    ->name('profile.update');

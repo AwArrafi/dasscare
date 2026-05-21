@@ -50,6 +50,18 @@
 
                     </div>
 
+                    <!-- USERNAME -->
+                    <div>
+
+                        <label class="block mb-2 font-medium text-gray-700">
+                            Username
+                        </label>
+
+                        <input type="text" name="username" value="{{ old('username') }}" placeholder="Contoh: rafi123"
+                            class="w-full rounded-2xl border border-gray-200 px-5 py-4 focus:outline-none focus:ring-2 focus:ring-indigo-400">
+
+                    </div>
+
                     <!-- GRID -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
 

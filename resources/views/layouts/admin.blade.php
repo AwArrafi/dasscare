@@ -19,7 +19,7 @@
             <!-- LOGO -->
             <div class="px-8 py-8 border-b border-gray-100">
 
-                <h1 class="text-3xl font-bold text-indigo-600 leading-tight">
+                <h1 class="text-3xl font-bold text-black-600 leading-tight">
 
                     Admin <br>
                     Psikologi
