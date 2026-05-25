@@ -1,71 +1,81 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- <!-- BACK TO HOME -->
-    <div class="px-16 mt-2 mb-6">
-
-        <a href="/"
-            class="inline-flex items-center gap-3
-              text-black
-              hover:text-indigo-600
-              transition">
-
-            <span class="text-2xl">
-                ←
-            </span>
-
-            <span class="text-lg font-medium">
-                Kembali Ke Halaman Utama
-            </span>
-
-        </a>
-
-    </div> --}}
-
     <div class="max-w-7xl mx-auto py-9 px-6">
 
         <!-- TITLE -->
         <div class="text-center mb-8">
+
             <h1 class="text-4xl font-bold">
+
                 HASIL TES
-                <span class="text-indigo-600">DASS-21</span>
+                <span class="text-indigo-600">
+
+                    DASS-21
+
+                </span>
+
             </h1>
 
             <p class="text-gray-500 mt-2">
+
                 Gejala Depresi, Kecemasan, dan Stress
+
             </p>
+
         </div>
 
         <!-- MAIN CARD -->
         <div class="border-2 border-gray-300 rounded-[30px] p-10">
 
-            <div class="grid grid-cols-2 gap-10">
+            <!-- HEADER -->
+            <div class="grid grid-cols-2 mb-10">
 
-                <!-- LEFT -->
-                <div>
+                <h2 class="text-2xl font-semibold text-indigo-600 text-center">
 
-                    <h2 class="text-2xl font-semibold text-indigo-600 mb-8 text-center">
-                        Hasil Skor
-                    </h2>
+                    Hasil Skor
 
-                    <!-- DEPRESI -->
-                    <div class="relative mb-12">
+                </h2>
 
-                        <!-- BACKGROUND TRACK -->
+                <h2 class="text-2xl font-semibold text-indigo-600 text-center">
+
+                    Rekomendasi Self-Care
+
+                </h2>
+
+            </div>
+
+            <!-- CONTENT -->
+            <div class="space-y-10">
+
+                <!-- DEPRESI -->
+                <div class="grid grid-cols-[55%_45%] gap-10 items-center">
+
+                    <!-- LEFT -->
+                    <div class="relative">
+
+                        <!-- TRACK -->
                         <div class="bg-gray-200 rounded-lg overflow-hidden">
 
                             <!-- BAR -->
-                            <div class="{{ $warnaDepresi }} rounded-lg px-4 py-3 flex justify-between items-center animate-bar"
+                            <div class="{{ $warnaDepresi }}
+                                rounded-lg px-4 py-5
+                                flex items-center animate-bar"
                                 style="width: {{ $widthDepresi }};">
 
                                 <div class="flex items-center gap-3">
 
                                     <span class="font-bold">
+
                                         {{ $depresi }}
+
                                     </span>
 
                                     <span>
-                                        Depresi ({{ $kategoriDepresi }})
+
+                                        Depresi
+                                        ({{ $kategoriDepresi }})
+
                                     </span>
 
                                 </div>
@@ -74,114 +84,201 @@
 
                         </div>
 
-                        <!-- FLOATING EMOJI -->
-                        <img src="{{ $emojiDepresi }}" class="w-20 absolute -right-6 -top-5">
+                        <!-- EMOJI -->
+                        <img src="{{ $emojiDepresi }}" class="w-20 absolute -right-6 top-1/2 -translate-y-1/2">
 
                     </div>
 
+                    <!-- RIGHT -->
+                    <div>
 
-                    <!-- ANXIETY -->
-                    <div class="relative mb-12">
+                        <p class="text-gray-800 text-lg leading-relaxed">
 
-                        <!-- BACKGROUND TRACK -->
-                        <div class="bg-gray-200 rounded-lg overflow-hidden">
+                            {{ $rekomendasiDepresi->content }}
 
-                            <!-- BAR -->
-                            <div class="{{ $warnaAnxiety }} rounded-lg px-4 py-3 flex justify-between items-center animate-bar"
-                                style="width: {{ $widthAnxiety }};">
+                        </p>
 
-                                <div class="flex items-center gap-3">
+                        <div class="relative inline-block group">
 
-                                    <span class="font-bold">
-                                        {{ $anxiety }}
-                                    </span>
+                            <span class="text-indigo-500 text-sm mt-2 inline-block cursor-not-allowed hover:underline">
 
-                                    <span>
-                                        Kecemasan ({{ $kategoriAnxiety }})
-                                    </span>
+                                Lihat Selengkapnya
 
-                                </div>
+                            </span>
 
-                            </div>
+                            <!-- TOOLTIP -->
+                            <div
+                                class="absolute left-0 top-7
+        opacity-0 invisible
+        group-hover:opacity-100
+        group-hover:visible
+        transition-all duration-300
+        bg-gray-900 text-white text-xs
+        px-3 py-2 rounded-lg shadow-lg
+        whitespace-nowrap z-50">
 
-                        </div>
-
-                        <!-- FLOATING EMOJI -->
-                        <img src="{{ $emojiAnxiety }}" class="w-20 absolute -right-6 -top-5">
-
-                    </div>
-
-                    <!-- STRESS -->
-                    <!-- STRESS -->
-                    <div class="relative mb-7">
-
-                        <!-- BACKGROUND TRACK -->
-                        <div class="bg-gray-200 rounded-lg overflow-hidden">
-
-                            <!-- BAR -->
-                            <div class="{{ $warnaStress }} rounded-lg px-4 py-3 flex justify-between items-center animate-bar"
-                                style="width: {{ $widthStress }};">
-
-                                <div class="flex items-center gap-3">
-
-                                    <span class="font-bold">
-                                        {{ $stress }}
-                                    </span>
-
-                                    <span>
-                                        Stress ({{ $kategoriStress }})
-                                    </span>
-
-                                </div>
+                                Fitur detail rekomendasi akan segera hadir
 
                             </div>
 
                         </div>
-
-                        <!-- FLOATING EMOJI -->
-                        <img src="{{ $emojiStress }}" class="w-20 absolute -right-6 -top-5">
 
                     </div>
 
                 </div>
 
-                <!-- RIGHT -->
-                <div>
+                <!-- ANXIETY -->
+                <div class="grid grid-cols-[55%_45%] gap-10 items-center">
 
-                    <h2 class="text-2xl font-semibold text-indigo-600 mb-8 text-center">
-                        Rekomendasi Self-Care
-                    </h2>
+                    <!-- LEFT -->
+                    <div class="relative">
 
-                    <div class="space-y-10 mt-9">
+                        <!-- TRACK -->
+                        <div class="bg-gray-200 rounded-lg overflow-hidden">
 
-                        <div>
-                            <p class="text-lg">
-                                Konseling psikolog, bantuan profesional
-                            </p>
+                            <!-- BAR -->
+                            <div class="{{ $warnaAnxiety }}
+                                rounded-lg px-4 py-5
+                                flex items-center animate-bar"
+                                style="width: {{ $widthAnxiety }};">
 
-                            <a href="#" class="text-sm text-indigo-500">
-                                Lihat Selengkapnya
-                            </a>
+                                <div class="flex items-center gap-3">
+
+                                    <span class="font-bold">
+
+                                        {{ $anxiety }}
+
+                                    </span>
+
+                                    <span>
+
+                                        Kecemasan
+                                        ({{ $kategoriAnxiety }})
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+
                         </div>
 
-                        <div>
-                            <p class="text-lg">
-                                Teknik relaksasi napas 4-7-8, micro-break setiap 2 jam kerja
-                            </p>
+                        <!-- EMOJI -->
+                        <img src="{{ $emojiAnxiety }}" class="w-20 absolute -right-6 top-1/2 -translate-y-1/2">
 
-                            <a href="#" class="text-sm text-indigo-500">
+                    </div>
+
+                    <!-- RIGHT -->
+                    <div>
+
+                        <p class="text-gray-800 text-lg leading-relaxed">
+
+                            {{ $rekomendasiAnxiety->content }}
+
+                        </p>
+
+                        <div class="relative inline-block group">
+
+                            <span class="text-indigo-500 text-sm mt-2 inline-block cursor-not-allowed hover:underline">
+
                                 Lihat Selengkapnya
-                            </a>
+
+                            </span>
+
+                            <!-- TOOLTIP -->
+                            <div
+                                class="absolute left-0 top-7
+        opacity-0 invisible
+        group-hover:opacity-100
+        group-hover:visible
+        transition-all duration-300
+        bg-gray-900 text-white text-xs
+        px-3 py-2 rounded-lg shadow-lg
+        whitespace-nowrap z-50">
+
+                                Fitur detail rekomendasi akan segera hadir
+
+                            </div>
+
                         </div>
 
-                        <div>
-                            <p class="text-lg">
-                                Guided exposure ringan, mindfulness meditation
-                            </p>
+                    </div>
 
-                            <a href="#" class="text-sm text-indigo-500">
+                </div>
+
+                <!-- STRESS -->
+                <div class="grid grid-cols-[55%_45%] gap-10 items-center">
+
+                    <!-- LEFT -->
+                    <div class="relative">
+
+                        <!-- TRACK -->
+                        <div class="bg-gray-200 rounded-lg overflow-hidden">
+
+                            <!-- BAR -->
+                            <div class="{{ $warnaStress }}
+                                rounded-lg px-4 py-5
+                                flex items-center animate-bar"
+                                style="width: {{ $widthStress }};">
+
+                                <div class="flex items-center gap-3">
+
+                                    <span class="font-bold">
+
+                                        {{ $stress }}
+
+                                    </span>
+
+                                    <span>
+
+                                        Stress
+                                        ({{ $kategoriStress }})
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- EMOJI -->
+                        <img src="{{ $emojiStress }}" class="w-20 absolute -right-6 top-1/2 -translate-y-1/2">
+
+                    </div>
+
+                    <!-- RIGHT -->
+                    <div>
+
+                        <p class="text-gray-800 text-lg leading-relaxed">
+
+                            {{ $rekomendasiStress->content }}
+
+                        </p>
+
+                        <div class="relative inline-block group">
+
+                            <span class="text-indigo-500 text-sm mt-2 inline-block cursor-not-allowed hover:underline">
+
                                 Lihat Selengkapnya
-                            </a>
+
+                            </span>
+
+                            <!-- TOOLTIP -->
+                            <div
+                                class="absolute left-0 top-7
+        opacity-0 invisible
+        group-hover:opacity-100
+        group-hover:visible
+        transition-all duration-300
+        bg-gray-900 text-white text-xs
+        px-3 py-2 rounded-lg shadow-lg
+        whitespace-nowrap z-50">
+
+                                Fitur detail rekomendasi akan segera hadir
+
+                            </div>
+
                         </div>
 
                     </div>
@@ -191,14 +288,17 @@
             </div>
 
             <!-- BUTTON -->
-            <div class="flex justify-center gap-10 mt-10">
+            <div class="flex justify-center mt-16">
 
-                <a href="/riwayat" class="bg-indigo-600 text-white px-8 py-3 rounded-xl">
-                    Riwayat Tes
-                </a>
+                <a href="/riwayat"
+                    class="bg-indigo-600 hover:bg-indigo-700
+        transition text-white
+        px-10 py-4 rounded-2xl
+        shadow-md hover:shadow-lg
+        font-medium text-lg">
 
-                <a href="/tes/1" class="bg-indigo-600 text-white px-8 py-3 rounded-xl">
-                    Ambil Tes Ulang
+                    Lihat Riwayat Tes
+
                 </a>
 
             </div>
@@ -209,18 +309,26 @@
 
     <style>
         @keyframes slideBar {
+
             from {
+
                 transform: scaleX(0);
+
             }
 
             to {
+
                 transform: scaleX(1);
+
             }
+
         }
 
         .animate-bar {
+
             animation: slideBar 1s ease forwards;
             transform-origin: left;
+
         }
     </style>
 @endsection

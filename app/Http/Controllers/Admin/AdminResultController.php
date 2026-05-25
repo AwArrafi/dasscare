@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Result;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Recommendation;
 
 class AdminResultController extends Controller
 {
@@ -14,6 +15,8 @@ class AdminResultController extends Controller
 
         return view('admin.results.index', compact('results'));
     }
+
+
 
     public function show($id)
     {
@@ -27,12 +30,36 @@ class AdminResultController extends Controller
 
         $warnaStress = $this->getColor($result->category_stress);
 
+        $widthDepresi = $this->getWidth($result->category_depression);
+
+        $widthAnxiety = $this->getWidth($result->category_anxiety);
+
+        $widthStress = $this->getWidth($result->category_stress);
+
         // REKOMENDASI
-        $rekomendasiDepresi = 'Konseling Psikolog, bantuan profesional';
+        $rekomendasiDepresi = Recommendation::where(
+            'dimension',
+            'depression'
+        )->where(
+            'category',
+            $result->category_depression
+        )->first();
 
-        $rekomendasiAnxiety = 'Teknik relaksasi napas 4-7-8, micro-break setiap 2 jam kerja';
+        $rekomendasiAnxiety = Recommendation::where(
+            'dimension',
+            'anxiety'
+        )->where(
+            'category',
+            $result->category_anxiety
+        )->first();
 
-        $rekomendasiStress = 'Guided exposure ringan, mindfulness meditation';
+        $rekomendasiStress = Recommendation::where(
+            'dimension',
+            'stress'
+        )->where(
+            'category',
+            $result->category_stress
+        )->first();
 
         return view('admin.results.show', [
 
@@ -45,6 +72,10 @@ class AdminResultController extends Controller
             'rekomendasiDepresi' => $rekomendasiDepresi,
             'rekomendasiAnxiety' => $rekomendasiAnxiety,
             'rekomendasiStress' => $rekomendasiStress,
+
+            'widthDepresi' => $widthDepresi,
+            'widthAnxiety' => $widthAnxiety,
+            'widthStress' => $widthStress,
 
         ]);
     }
@@ -60,5 +91,18 @@ class AdminResultController extends Controller
         }
 
         return 'bg-green-500 text-black';
+    }
+
+    private function getWidth($kategori)
+    {
+        if (in_array($kategori, ['Berat', 'Sangat Berat'])) {
+            return '100%';
+        }
+
+        if ($kategori == 'Sedang') {
+            return '65%';
+        }
+
+        return '35%';
     }
 }

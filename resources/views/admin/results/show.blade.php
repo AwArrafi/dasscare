@@ -94,7 +94,6 @@
             </div>
 
             <!-- CONTENT -->
-            <!-- CONTENT -->
             <div class="px-6 pb-8 pt-12 border-t border-gray-100">
 
                 <div class="space-y-8">
@@ -102,22 +101,36 @@
                     <!-- DEPRESI -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
-                        <div
-                            class="{{ $warnaDepresi }} rounded-lg px-5 py-4 flex justify-between items-center text-white font-semibold">
+                        <!-- BAR -->
+                        <div class="bg-gray-200 rounded-lg overflow-hidden">
 
-                            <span>
-                                Depresi ({{ $result->category_depression }})
-                            </span>
+                            <div class="{{ $warnaDepresi }}
+                                rounded-lg px-5 py-4
+                                flex justify-between items-center
+                                text-white font-semibold"
+                                style="width: {{ $widthDepresi }};">
 
-                            <span>
-                                {{ $result->score_depression }}
-                            </span>
+                                <span>
+
+                                    Depresi
+                                    ({{ $result->category_depression }})
+
+                                </span>
+
+                                <span>
+
+                                    {{ $result->score_depression }}
+
+                                </span>
+
+                            </div>
 
                         </div>
 
+                        <!-- REKOMENDASI -->
                         <p class="text-2xl text-gray-700 leading-relaxed">
 
-                            {{ $rekomendasiDepresi }}
+                            {{ $rekomendasiDepresi->content }}
 
                         </p>
 
@@ -126,22 +139,36 @@
                     <!-- ANXIETY -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
-                        <div
-                            class="{{ $warnaAnxiety }} rounded-lg px-5 py-4 flex justify-between items-center text-white font-semibold">
+                        <!-- BAR -->
+                        <div class="bg-gray-200 rounded-lg overflow-hidden">
 
-                            <span>
-                                Kecemasan ({{ $result->category_anxiety }})
-                            </span>
+                            <div class="{{ $warnaAnxiety }}
+            rounded-lg px-5 py-4
+            flex justify-between items-center
+            text-white font-semibold"
+                                style="width: {{ $widthAnxiety }};">
 
-                            <span>
-                                {{ $result->score_anxiety }}
-                            </span>
+                                <span>
+
+                                    Kecemasan
+                                    ({{ $result->category_anxiety }})
+
+                                </span>
+
+                                <span>
+
+                                    {{ $result->score_anxiety }}
+
+                                </span>
+
+                            </div>
 
                         </div>
 
+                        <!-- REKOMENDASI -->
                         <p class="text-2xl text-gray-700 leading-relaxed">
 
-                            {{ $rekomendasiAnxiety }}
+                            {{ $rekomendasiAnxiety->content }}
 
                         </p>
 
@@ -150,22 +177,36 @@
                     <!-- STRESS -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
-                        <div
-                            class="{{ $warnaStress }} rounded-lg px-5 py-4 flex justify-between items-center text-white font-semibold">
+                        <!-- BAR -->
+                        <div class="bg-gray-200 rounded-lg overflow-hidden">
 
-                            <span>
-                                Stress ({{ $result->category_stress }})
-                            </span>
+                            <div class="{{ $warnaStress }}
+            rounded-lg px-5 py-4
+            flex justify-between items-center
+            text-white font-semibold"
+                                style="width: {{ $widthStress }};">
 
-                            <span>
-                                {{ $result->score_stress }}
-                            </span>
+                                <span>
+
+                                    Stress
+                                    ({{ $result->category_stress }})
+
+                                </span>
+
+                                <span>
+
+                                    {{ $result->score_stress }}
+
+                                </span>
+
+                            </div>
 
                         </div>
 
+                        <!-- REKOMENDASI -->
                         <p class="text-2xl text-gray-700 leading-relaxed">
 
-                            {{ $rekomendasiStress }}
+                            {{ $rekomendasiStress->content }}
 
                         </p>
 

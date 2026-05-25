@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Recommendation extends Model
 {
-    //
+    protected $fillable = [
+
+        'dimension',
+        'category',
+        'content',
+
+    ];
 }

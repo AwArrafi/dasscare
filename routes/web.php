@@ -5,6 +5,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AdminResultController;
+use App\Http\Controllers\Admin\SelfCareController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +79,8 @@ Route::middleware(['auth', 'admin'])
 
         // DETAIL
         Route::get('/results/{id}', [AdminResultController::class, 'show']);
+
+        Route::resource('self-care', SelfCareController::class);
     });
 
 /*

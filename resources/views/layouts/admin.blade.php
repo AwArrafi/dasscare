@@ -54,10 +54,10 @@
                     </a>
 
                     <!-- SELF CARE -->
-                    <a href="#"
+                    <a href="/admin/self-care"
                         class="block px-5 py-4 rounded-2xl transition font-medium
 
-   {{ request()->is('admin/selfcare*') ? 'bg-indigo-600 text-white shadow' : 'text-gray-700 hover:bg-gray-100' }}">
+   {{ request()->is('admin/self-care*') ? 'bg-indigo-600 text-white shadow' : 'text-gray-700 hover:bg-gray-100' }}">
 
                         Self-Care
 

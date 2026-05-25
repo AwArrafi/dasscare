@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
+use App\Models\Recommendation;
 
 class TestController extends Controller
 {
@@ -253,6 +254,44 @@ class TestController extends Controller
         $widthAnxiety = $this->getWidth($kategoriAnxiety);
         $widthStress = $this->getWidth($kategoriStress);
 
+        // REKOMENDASI
+
+        $rekomendasiDepresi = Recommendation::where(
+
+            'dimension',
+            'depression'
+
+        )->where(
+
+            'category',
+            $kategoriDepresi
+
+        )->first();
+
+        $rekomendasiAnxiety = Recommendation::where(
+
+            'dimension',
+            'anxiety'
+
+        )->where(
+
+            'category',
+            $kategoriAnxiety
+
+        )->first();
+
+        $rekomendasiStress = Recommendation::where(
+
+            'dimension',
+            'stress'
+
+        )->where(
+
+            'category',
+            $kategoriStress
+
+        )->first();
+
         return view('hasil', [
 
             'depresi' => $result->score_depression,
@@ -273,7 +312,11 @@ class TestController extends Controller
 
             'emojiDepresi' => $emojiDepresi,
             'emojiAnxiety' => $emojiAnxiety,
-            'emojiStress' => $emojiStress
+            'emojiStress' => $emojiStress,
+
+            'rekomendasiDepresi' => $rekomendasiDepresi,
+            'rekomendasiAnxiety' => $rekomendasiAnxiety,
+            'rekomendasiStress' => $rekomendasiStress
         ]);
     }
 }
