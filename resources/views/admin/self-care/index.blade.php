@@ -90,14 +90,6 @@
 
                                     <div class="flex items-center gap-3">
 
-                                        <!-- EDIT -->
-                                        <a href="{{ route('self-care.edit', $recommendation->id) }}"
-                                            class="bg-yellow-400 hover:bg-yellow-500 transition text-white px-4 py-2 rounded-xl text-sm font-medium">
-
-                                            Edit
-
-                                        </a>
-
                                         <a href="{{ route('self-care.edit', $recommendation->id) }}"
                                             class="bg-blue-500 hover:bg-blue-600 transition text-white px-4 py-2 rounded-xl text-sm font-medium">
 
