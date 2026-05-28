@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use App\Models\Recommendation;
+use App\Services\PriorityRuleService;
 
 class TestController extends Controller
 {
@@ -78,14 +79,17 @@ class TestController extends Controller
         foreach ($answers as $questionId => $value) {
 
             if (in_array($questionId, $depresiQuestions)) {
+
                 $depresi += $value;
             }
 
             if (in_array($questionId, $anxietyQuestions)) {
+
                 $anxiety += $value;
             }
 
             if (in_array($questionId, $stressQuestions)) {
+
                 $stress += $value;
             }
         }
@@ -115,8 +119,50 @@ class TestController extends Controller
         $widthAnxiety = $this->getWidth($kategoriAnxiety);
         $widthStress = $this->getWidth($kategoriStress);
 
-        // SAVE RESULT KE DATABASE
-        if (session()->has('test_session_id')) {
+        // REKOMENDASI
+        $rekomendasiDepresi = Recommendation::where(
+
+            'dimension',
+            'depression'
+
+        )->where(
+
+            'category',
+            $kategoriDepresi
+
+        )->first();
+
+        $rekomendasiAnxiety = Recommendation::where(
+
+            'dimension',
+            'anxiety'
+
+        )->where(
+
+            'category',
+            $kategoriAnxiety
+
+        )->first();
+
+        $rekomendasiStress = Recommendation::where(
+
+            'dimension',
+            'stress'
+
+        )->where(
+
+            'category',
+            $kategoriStress
+
+        )->first();
+
+        /*
+    |--------------------------------------------------------------------------
+    | SAVE DATABASE HANYA JIKA LOGIN
+    |--------------------------------------------------------------------------
+    */
+
+        if (Auth::check() && session()->has('test_session_id')) {
 
             $result = Result::firstOrCreate(
 
@@ -142,12 +188,46 @@ class TestController extends Controller
             session()->forget('test_session_id');
             session()->forget('answers');
 
-            // REDIRECT KE DETAIL HASIL
+            // REDIRECT DETAIL
             return redirect('/hasil/' . $result->id);
         }
 
-        // JIKA SESSION TIDAK ADA
-        return redirect('/riwayat');
+        /*
+    |--------------------------------------------------------------------------
+    | GUEST USER -> TAMPILKAN HASIL TANPA SAVE DATABASE
+    |--------------------------------------------------------------------------
+    */
+
+        return view('hasil', [
+
+            'depresi' => $depresi,
+            'anxiety' => $anxiety,
+            'stress' => $stress,
+
+            'kategoriDepresi' => $kategoriDepresi,
+            'kategoriAnxiety' => $kategoriAnxiety,
+            'kategoriStress' => $kategoriStress,
+
+            'warnaDepresi' => $warnaDepresi,
+            'warnaAnxiety' => $warnaAnxiety,
+            'warnaStress' => $warnaStress,
+
+            'widthDepresi' => $widthDepresi,
+            'widthAnxiety' => $widthAnxiety,
+            'widthStress' => $widthStress,
+
+            'emojiDepresi' => $emojiDepresi,
+            'emojiAnxiety' => $emojiAnxiety,
+            'emojiStress' => $emojiStress,
+
+            'rekomendasiDepresi' => $rekomendasiDepresi,
+            'rekomendasiAnxiety' => $rekomendasiAnxiety,
+            'rekomendasiStress' => $rekomendasiStress,
+
+            // TAMBAHAN
+            'resultId' => isset($result) ? $result->id : null,
+
+        ]);
     }
 
     private function kategoriDepresi($score)
@@ -316,7 +396,133 @@ class TestController extends Controller
 
             'rekomendasiDepresi' => $rekomendasiDepresi,
             'rekomendasiAnxiety' => $rekomendasiAnxiety,
-            'rekomendasiStress' => $rekomendasiStress
+            'rekomendasiStress' => $rekomendasiStress,
+
+            'resultId' => $result->id
         ]);
+    }
+
+    public function selfCareDetail($id)
+    {
+        $result = Result::findOrFail($id);
+
+        /*
+    |--------------------------------------------------------------------------
+    | PRIORITY RULE
+    |--------------------------------------------------------------------------
+    */
+
+        $priorityRule = (new PriorityRuleService())->check(
+
+            $result->category_depression,
+            $result->category_anxiety,
+            $result->category_stress
+
+        );
+
+        /*
+    |--------------------------------------------------------------------------
+    | MAIN RECOMMENDATION
+    |--------------------------------------------------------------------------
+    */
+
+        $mainRecommendation = Recommendation::where(
+
+            'dimension',
+            'anxiety'
+
+        )->where(
+
+            'category',
+            $result->category_anxiety
+
+        )->first();
+
+        /*
+    |--------------------------------------------------------------------------
+    | ADDITIONAL RECOMMENDATIONS
+    |--------------------------------------------------------------------------
+    */
+
+        $additionalRecommendations = Recommendation::where('id', '!=', $mainRecommendation->id)
+            ->take(3)
+            ->get();
+
+
+        $colorDepresi = $this->getProgressColor(
+            $result->category_depression
+        );
+
+        $colorAnxiety = $this->getProgressColor(
+            $result->category_anxiety
+        );
+
+        $colorStress = $this->getProgressColor(
+            $result->category_stress
+        );
+
+        $widthDepresi = $this->getProgressWidth(
+            $result->category_depression
+        );
+
+        $widthAnxiety = $this->getProgressWidth(
+            $result->category_anxiety
+        );
+
+        $widthStress = $this->getProgressWidth(
+            $result->category_stress
+        );
+
+        return view('selfcare-detail', [
+
+            'result' => $result,
+
+            'priorityRule' => $priorityRule,
+
+            'mainRecommendation' => $mainRecommendation,
+
+            'additionalRecommendations' => $additionalRecommendations,
+
+            'colorDepresi' => $colorDepresi,
+            'colorAnxiety' => $colorAnxiety,
+            'colorStress' => $colorStress,
+
+            'widthDepresi' => $widthDepresi,
+            'widthAnxiety' => $widthAnxiety,
+            'widthStress' => $widthStress,
+
+        ]);
+    }
+
+    private function getProgressColor($category)
+    {
+        return match ($category) {
+
+            'Normal' => 'bg-green-500',
+            'Ringan' => 'bg-green-500',
+
+            'Sedang' => 'bg-yellow-400',
+
+            'Berat' => 'bg-red-500',
+            'Sangat Berat' => 'bg-red-500',
+
+            default => 'bg-gray-400',
+        };
+    }
+
+    private function getProgressWidth($category)
+    {
+        return match ($category) {
+
+            'Normal' => '25%',
+            'Ringan' => '45%',
+
+            'Sedang' => '65%',
+
+            'Berat' => '85%',
+            'Sangat Berat' => '100%',
+
+            default => '30%',
+        };
     }
 }
