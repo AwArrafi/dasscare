@@ -45,6 +45,67 @@
                         </div>
                     @endif
 
+                    @if ($errors->any())
+                        <div id="toastError"
+                            class="fixed top-6 right-6
+        max-w-sm
+        bg-white
+        border-l-4 border-red-500
+        text-gray-800
+        px-5 py-4
+        rounded-2xl
+        shadow-2xl
+        z-50">
+
+                            <div class="flex items-start gap-3">
+
+                                <div class="text-red-500 text-xl">
+
+                                </div>
+
+                                <div>
+
+                                    <p class="font-semibold text-red-600">
+
+                                        Login Gagal
+
+                                    </p>
+
+                                    <p class="text-sm text-gray-600">
+
+                                        {{ $errors->first() }}
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <script>
+                            setTimeout(() => {
+
+                                const toast =
+                                    document.getElementById('toastError');
+
+                                if (toast) {
+
+                                    toast.style.transition = '0.4s';
+                                    toast.style.opacity = '0';
+
+                                    setTimeout(() => {
+
+                                        toast.remove();
+
+                                    }, 400);
+
+                                }
+
+                            }, 3000);
+                        </script>
+                    @endif
+
                 </div>
 
                 <!-- FORM -->
@@ -102,9 +163,9 @@
                                         d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
 
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5
-                                                     c4.477 0 8.268 2.943 9.542 7
-                                                     -1.274 4.057-5.065 7-9.542 7
-                                                     -4.477 0-8.268-2.943-9.542-7z" />
+                                                             c4.477 0 8.268 2.943 9.542 7
+                                                             -1.274 4.057-5.065 7-9.542 7
+                                                             -4.477 0-8.268-2.943-9.542-7z" />
                                 </svg>
 
                             </button>

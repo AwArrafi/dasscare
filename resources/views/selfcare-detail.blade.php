@@ -1,44 +1,60 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- BACK BUTTON -->
-    <a href="javascript:history.back()"
-        class="absolute top-30 left-16
-          inline-flex items-center justify-center
-          w-9 h-9 rounded-full
-          border border-gray-300
-          text-gray-500
-          hover:text-indigo-600
-          hover:border-indigo-600
-          transition">
-
-        ←
-    </a>
-    <div class="min-h-screen py-14 px-6">
+    <div class="min-h-screen py-8 md:py-14 px-4 md:px-6">
 
         <!-- CONTAINER -->
         <div class="max-w-6xl mx-auto">
 
             <!-- HEADER -->
-            <div class="mb-10">
+            <div class="flex items-start gap-4 mb-8 md:mb-10">
 
-                <h1 class="text-4xl font-bold text-gray-800 mb-2">
+                <!-- BACK -->
+                <a href="javascript:history.back()"
+                    class="mt-1 inline-flex items-center justify-center
+                    min-w-[40px] w-10 h-10 rounded-full
+                    border border-gray-300
+                    bg-white
+                    text-gray-500
+                    hover:text-indigo-600
+                    hover:border-indigo-600
+                    hover:shadow-md
+                    transition-all duration-300">
 
-                    Rekomendasi Self-Care
+                    ←
 
-                </h1>
+                </a>
 
-                <p class="text-gray-500">
+                <!-- TITLE -->
+                <div>
 
-                    Rekomendasi personal berdasarkan evaluasi psikologis Anda.
+                    <h1
+                        class="text-3xl md:text-4xl
+                        font-bold text-gray-800
+                        leading-tight mb-2">
 
-                </p>
+                        Rekomendasi Self-Care
+
+                    </h1>
+
+                    <p class="text-gray-500
+                        text-sm md:text-base">
+
+                        Rekomendasi personal berdasarkan evaluasi psikologis Anda.
+
+                    </p>
+
+                </div>
 
             </div>
 
             <!-- SCORE SUMMARY -->
-            <div class="bg-white rounded-3xl p-6
-                shadow-sm border border-gray-500 mb-8">
+            <div
+                class="bg-white rounded-3xl
+                p-4 md:p-6
+                shadow-[0_2px_12px_rgba(0,0,0,0.04)]
+                border border-gray-300
+                mb-8">
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
 
@@ -64,7 +80,9 @@
 
                         <div class="bg-gray-200 rounded-full h-3 overflow-hidden">
 
-                            <div class="{{ $colorDepresi }} h-full rounded-full transition-all duration-500"
+                            <div class="{{ $colorDepresi }}
+                                h-full rounded-full
+                                transition-all duration-500"
                                 style="width: {{ $widthDepresi }}">
 
                             </div>
@@ -95,7 +113,9 @@
 
                         <div class="bg-gray-200 rounded-full h-3 overflow-hidden">
 
-                            <div class="{{ $colorAnxiety }} h-full rounded-full transition-all duration-500"
+                            <div class="{{ $colorAnxiety }}
+                                h-full rounded-full
+                                transition-all duration-500"
                                 style="width: {{ $widthAnxiety }}">
 
                             </div>
@@ -126,7 +146,9 @@
 
                         <div class="bg-gray-200 rounded-full h-3 overflow-hidden">
 
-                            <div class="{{ $colorStress }} h-full rounded-full transition-all duration-500"
+                            <div class="{{ $colorStress }}
+                                h-full rounded-full
+                                transition-all duration-500"
                                 style="width: {{ $widthStress }}">
 
                             </div>
@@ -140,10 +162,11 @@
             </div>
 
             <!-- PRIORITY RULE -->
-            <div class="bg-indigo-50 border border-indigo-100
-                rounded-2xl p-5 mb-8">
+            <div class="bg-indigo-50 border border-indigo-300
+                rounded-3xl p-5 md:p-6 mb-8">
 
-                <div class="flex items-start gap-4">
+                <div class="flex flex-col sm:flex-row
+                    items-start gap-4">
 
                     <!-- ICON -->
                     <div
@@ -159,7 +182,8 @@
                     <!-- CONTENT -->
                     <div class="flex-1">
 
-                        <div class="flex items-center gap-3 mb-2">
+                        <div class="flex flex-wrap
+                            items-center gap-2 mb-2">
 
                             <h3 class="font-semibold text-gray-800">
 
@@ -168,7 +192,8 @@
                             </h3>
 
                             <span
-                                class="px-3 py-1 rounded-full text-xs font-semibold
+                                class="px-3 py-1 rounded-full
+                                text-xs font-semibold
 
                                 @if ($priorityRule['color'] === 'red') bg-red-100 text-red-600
                                 @elseif ($priorityRule['color'] === 'yellow')
@@ -176,8 +201,7 @@
                                 @elseif ($priorityRule['color'] === 'green')
                                     bg-green-100 text-green-700
                                 @else
-                                    bg-blue-100 text-blue-700 @endif
-                            ">
+                                    bg-blue-100 text-blue-700 @endif">
 
                                 {{ $priorityRule['badge'] }}
 
@@ -185,7 +209,8 @@
 
                         </div>
 
-                        <p class="text-gray-600 text-sm leading-relaxed">
+                        <p class="text-gray-600 text-sm
+                            leading-relaxed">
 
                             {{ $priorityRule['description'] }}
 
@@ -204,7 +229,7 @@
                 <div
                     class="bg-white rounded-3xl p-6
                     border border-red-200
-                    shadow-sm">
+                    shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
 
                     <div class="flex justify-between items-start mb-6">
 
@@ -237,13 +262,17 @@
 
                         </div>
 
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                        <h3
+                            class="text-xl md:text-2xl
+                            font-semibold text-gray-800
+                            leading-relaxed mb-4">
 
                             {{ $mainRecommendation->content }}
 
                         </h3>
 
-                        <p class="text-gray-500 leading-relaxed mb-6">
+                        <p class="text-gray-500 leading-relaxed
+                            mb-6 text-sm md:text-base">
 
                             {{ $priorityRule['priority'] }}
 
@@ -274,8 +303,10 @@
                         <div class="relative group">
 
                             <button
-                                class="w-full bg-indigo-600 hover:bg-indigo-700
-        transition text-white py-3 rounded-2xl font-medium">
+                                class="w-full bg-indigo-600
+                                hover:bg-indigo-700
+                                transition text-white
+                                py-3 rounded-2xl font-medium">
 
                                 Mulai Sesi
 
@@ -283,14 +314,17 @@
 
                             <!-- TOOLTIP -->
                             <div
-                                class="absolute left-1/2 -translate-x-1/2 top-full mt-3
-        opacity-0 invisible
-        group-hover:opacity-100
-        group-hover:visible
-        transition-all duration-300
-        bg-gray-900 text-white text-xs
-        px-4 py-2 rounded-xl shadow-xl
-        whitespace-nowrap z-50">
+                                class="absolute left-1/2
+                                -translate-x-1/2 top-full mt-3
+                                opacity-0 invisible
+                                group-hover:opacity-100
+                                group-hover:visible
+                                transition-all duration-300
+                                bg-gray-900 text-white text-xs
+                                px-4 py-2 rounded-xl
+                                shadow-xl
+                                w-max max-w-[220px]
+                                text-center z-50">
 
                                 Coming Soon!
 
@@ -305,7 +339,8 @@
                 <!-- REKOMENDASI TAMBAHAN -->
                 <div class="lg:col-span-2">
 
-                    <div class="flex justify-between items-center mb-5">
+                    <div class="flex justify-between
+                        items-center mb-5">
 
                         <h2 class="text-xl font-semibold text-gray-800">
 
@@ -326,11 +361,14 @@
                         @foreach ($additionalRecommendations as $recommendation)
                             <div
                                 class="bg-white rounded-2xl p-5
-                                border border-gray-500
-                                shadow-sm hover:shadow-md
+                                border border-gray-300
+                                shadow-[0_2px_12px_rgba(0,0,0,0.04)]
+                                hover:shadow-md
                                 transition">
 
-                                <div class="flex items-start gap-4">
+                                <div
+                                    class="flex flex-col sm:flex-row
+                                    items-start gap-4">
 
                                     <!-- ICON -->
                                     <div
@@ -346,7 +384,10 @@
                                     <!-- CONTENT -->
                                     <div class="flex-1">
 
-                                        <div class="flex justify-between items-start mb-2">
+                                        <div
+                                            class="flex flex-wrap
+                                            justify-between
+                                            items-start gap-2 mb-2">
 
                                             <h3 class="font-semibold text-gray-800">
 
@@ -356,7 +397,8 @@
 
                                             <span
                                                 class="bg-blue-100 text-blue-600
-                                                text-xs px-3 py-1 rounded-full font-semibold">
+                                                text-xs px-3 py-1
+                                                rounded-full font-semibold">
 
                                                 MENENGAH
 
@@ -364,7 +406,9 @@
 
                                         </div>
 
-                                        <p class="text-gray-500 text-sm leading-relaxed">
+                                        <p
+                                            class="text-gray-500
+                                            text-sm leading-relaxed">
 
                                             {{ $recommendation->content }}
 

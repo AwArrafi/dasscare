@@ -40,55 +40,231 @@
 
     </section>
 
-    <!-- FACT SECTION -->
-    <section class="bg-gray-100 py-4 text-center">
+    <!-- FACT + FOOTER -->
+    <section class="bg-gray-100 mt-10">
 
-        <h2 class="text-2xl font-semibold mb-10">
-            Fakta mengenai website kami
-        </h2>
+        <div class="max-w-7xl mx-auto px-6 md:px-10 py-16">
 
-        <div class="flex justify-center gap-10 px-10">
+            <!-- TITLE -->
+            <div class="text-center mb-12">
 
-            <!-- CARD 1 -->
-            <div
-                class="bg-gradient-to-br from-indigo-400 to-indigo-600 text-black p-6 rounded-2xl w-64 shadow-md hover:scale-105 transition">
-                <div class="mb-4">
-                    <img src="/images/icon1.png" class="w-12 mx-auto">
-                </div>
-                <h3 class="font-bold text-lg whitespace-nowrap text-center">
-                    Rekomendasi Profesional
-                </h3>
-                <p class="text-sm font-semibold mt-2 text-black/80 text-center">
-                    Tips & Tricks langsung dari profesional
-                </p>
+                <h2 class="text-2xl md:text-3xl font-semibold">
+
+                    Fakta Mengenai Website Kami
+
+                </h2>
             </div>
 
-            <!-- CARD 2 -->
-            <div
-                class="bg-gradient-to-br from-indigo-400 to-indigo-600 text-black p-6 rounded-2xl w-64 shadow-md hover:scale-105 transition">
-                <div class="mb-4">
-                    <img src="/images/icon2.png" class="w-12 mx-auto">
+            <!-- FACT CARDS -->
+            <div class="grid grid-cols-1
+            sm:grid-cols-2
+            lg:grid-cols-3
+            gap-6 mb-16">
+
+                <!-- CARD 1 -->
+                <div
+                    class="bg-gradient-to-br
+                from-indigo-400 to-indigo-600
+                rounded-3xl p-6
+                shadow-md hover:shadow-xl
+                hover:-translate-y-1
+                transition-all duration-300">
+
+                    <img src="/images/icon1.png" class="w-12 mb-4">
+
+                    <h3 class="font-bold text-lg mb-2">
+
+                        Rekomendasi Profesional
+
+                    </h3>
+
+                    <p class="text-sm text-black/80">
+
+                        Rekomendasi self-care berdasarkan
+                        kategori hasil evaluasi psikologis.
+
+                    </p>
+
                 </div>
-                <h3 class="font-bold text-lg text-center">
-                    Aman
-                </h3>
-                <p class="text-sm font-semibold mt-2 text-black/80 text-center">
-                    Data aman dan terjaga kerahasiannya.
-                </p>
+
+                <!-- CARD 2 -->
+                <div
+                    class="bg-gradient-to-br
+                from-indigo-400 to-indigo-600
+                rounded-3xl p-6
+                shadow-md hover:shadow-xl
+                hover:-translate-y-1
+                transition-all duration-300">
+
+                    <img src="/images/icon2.png" class="w-12 mb-4">
+
+                    <h3 class="font-bold text-lg mb-2">
+
+                        Aman & Rahasia
+
+                    </h3>
+
+                    <p class="text-sm text-black/80">
+
+                        Data pengguna tersimpan dengan aman
+                        dan menjaga privasi setiap hasil evaluasi.
+
+                    </p>
+
+                </div>
+
+                <!-- CARD 3 -->
+                <div
+                    class="bg-gradient-to-br
+                from-indigo-400 to-indigo-600
+                rounded-3xl p-6
+                shadow-md hover:shadow-xl
+                hover:-translate-y-1
+                transition-all duration-300">
+
+                    <img src="/images/icon3.png" class="w-12 mb-4">
+
+                    <h3 class="font-bold text-lg mb-2">
+
+                        Cepat & Tepat
+
+                    </h3>
+
+                    <p class="text-sm text-black/80">
+
+                        Hasil dapat diperoleh secara langsung
+                        setelah seluruh pertanyaan selesai dijawab.
+
+                    </p>
+
+                </div>
+
             </div>
 
-            <!-- CARD 3 -->
-            <div
-                class="bg-gradient-to-br from-indigo-400 to-indigo-600 text-black p-6 rounded-2xl w-64 shadow-md hover:scale-105 transition">
-                <div class="mb-4">
-                    <img src="/images/icon3.png" class="w-12 mx-auto">
+            <!-- FOOTER CONTENT -->
+            <div class="border-t border-gray-200
+            pt-12">
+
+                <div class="grid grid-cols-1
+                md:grid-cols-3
+                gap-10">
+
+                    <!-- BRAND -->
+                    <div>
+
+                        <div class="flex items-center
+                        gap-3 mb-4">
+
+                            {{-- <div>
+
+                                <img src="/images/logo.png" class="w-12 mb-4">
+
+                            </div> --}}
+
+                            <h3 class="font-bold text-lg">
+
+                                Biro Psikologi Prima Solutions
+
+                            </h3>
+
+                        </div>
+
+                        <p class="text-gray-500
+                        text-sm leading-7">
+
+                            Sistem evaluasi psikologis berbasis
+                            DASS-21 untuk membantu pengguna
+                            memahami kondisi depresi,
+                            kecemasan, dan stres secara mandiri.
+
+                        </p>
+
+                    </div>
+
+                    <!-- MENU -->
+                    <div>
+
+                        <h4 class="font-semibold mb-4">
+
+                            Informasi
+
+                        </h4>
+
+                        <div class="flex flex-col gap-3
+                        text-sm text-gray-500">
+
+                            <a href="#" class="hover:text-indigo-600">
+
+                                Tentang Kami
+
+                            </a>
+
+                            <a href="/petunjuk" class="hover:text-indigo-600">
+
+                                Panduan Tes
+
+                            </a>
+
+                            <a href="#" class="hover:text-indigo-600">
+
+                                Kebijakan Privasi
+
+                            </a>
+
+                            <a href="#" class="hover:text-indigo-600">
+
+                                Syarat & Ketentuan
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <!-- SOCIAL -->
+                    <div>
+
+                        <h4 class="font-semibold mb-4">
+
+                            Kontak & Media Sosial
+
+                        </h4>
+
+                        <div class="flex flex-col gap-3
+                        text-sm text-gray-500">
+
+                            <a href="https://www.instagram.com/prima_solutions?igsh=bmR5OTZ0ZGl4dHli"
+                                class="hover:text-indigo-600">
+
+                                Instagram
+
+                            </a>
+
+                            <a href="#" class="hover:text-indigo-600">
+
+                                Email
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
                 </div>
-                <h3 class="font-bold text-lg text-center">
-                    Cepat & Tepat
-                </h3>
-                <p class="text-sm font-semibold mt-2 text-black/80 text-center">
-                    Langsung mendapatkan hasil setelah proses.
-                </p>
+
+                <!-- COPYRIGHT -->
+                <div class="border-t border-gray-200
+                mt-10 pt-6">
+
+                    <p class="text-xs text-gray-400">
+
+                        © 2026 DASSCare Professional.
+                        Dikembangkan oleh Awang & Tim Prima Solutions.
+
+                    </p>
+
+                </div>
+
             </div>
 
         </div>
