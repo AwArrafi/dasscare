@@ -1,7 +1,11 @@
 @extends('layouts.app')
 @section('content')
     <!-- HERO SECTION -->
-    <section class="max-w-6xl mx-auto flex items-center justify-between px-6 py-10">
+    <section class="max-w-6xl mx-auto
+    flex items-center justify-between
+    px-6
+    pt-10
+    pb-2">
 
         <div class="max-wxl">
             <h1 class="text-3xl font-semibold leading-tight">
@@ -41,7 +45,7 @@
     </section>
 
     <!-- FACT + FOOTER -->
-    <section class="bg-gray-100 mt-10">
+    <section class="bg-gray-100 mt-2">
 
         <div class="max-w-7xl mx-auto px-6 md:px-10 py-16">
 

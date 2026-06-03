@@ -1,27 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- BACK BUTTON -->
-    @if ($step > 1)
-        <a href="/tes/{{ $step - 1 }}"
-            class="fixed md:absolute
-            top-24 md:top-30
-            left-4 md:left-16
-            z-50
-            inline-flex items-center justify-center
-            w-10 h-10 rounded-full
-            border border-gray-300
-            bg-white/80 backdrop-blur
-            text-gray-500
-            hover:text-indigo-600
-            hover:border-indigo-600
-            transition shadow-sm">
-
-            ←
-
-        </a>
-    @endif
-
     <div class="flex justify-center items-center
         min-h-[75vh]
         px-4 py-8">
@@ -32,6 +11,22 @@
             px-5 md:px-10
             py-8 md:py-10
             w-full max-w-2xl text-center">
+
+            @if ($step > 1)
+                <div class="flex justify-start mb-4">
+
+                    <a href="/tes/{{ $step - 1 }}"
+                        class="inline-flex items-center gap-2
+            text-gray-500
+            hover:text-indigo-600
+            transition">
+
+                        ← Kembali
+
+                    </a>
+
+                </div>
+            @endif
 
             <!-- STEP -->
             <p class="text-sm md:text-base

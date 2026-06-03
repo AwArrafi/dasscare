@@ -100,18 +100,11 @@
 
                     <!-- TITLE -->
                     <div>
-
                         <h2 class="text-2xl font-bold text-gray-800">
                             Dashboard
                         </h2>
-
-                        <p class="text-sm text-gray-400 mt-1">
-                            Selamat datang kembali Admin 😄
-                        </p>
-
                     </div>
 
-                    <!-- PROFILE -->
                     <!-- PROFILE -->
                     <div class="relative group">
 

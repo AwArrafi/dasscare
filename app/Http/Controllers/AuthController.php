@@ -71,7 +71,7 @@ class AuthController extends Controller
     {
         $credentials = $request->validate([
 
-            'email' => ['required'],
+            'username' => ['required'],
             'password' => ['required']
 
         ]);
@@ -91,7 +91,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'Email atau password salah.'
+            'username' => 'username atau password salah.'
         ]);
     }
 

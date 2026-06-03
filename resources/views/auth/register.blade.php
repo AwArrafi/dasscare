@@ -13,6 +13,67 @@
 
             <div class="w-full max-w-2xl">
 
+                @if ($errors->any())
+                    <div id="toastError"
+                        class="fixed top-6 right-6
+        max-w-sm
+        bg-white
+        border-l-4 border-red-500
+        text-gray-800
+        px-5 py-4
+        rounded-2xl
+        shadow-2xl
+        z-50">
+
+                        <div class="flex items-start gap-3">
+
+                            <div class="text-red-500 text-xl">
+
+                            </div>
+
+                            <div>
+
+                                <p class="font-semibold text-red-600">
+
+                                    Registrasi Gagal
+
+                                </p>
+
+                                <p class="text-sm text-gray-600">
+
+                                    {{ $errors->first() }}
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <script>
+                        setTimeout(() => {
+
+                            const toast =
+                                document.getElementById('toastError');
+
+                            if (toast) {
+
+                                toast.style.transition = '0.4s';
+                                toast.style.opacity = '0';
+
+                                setTimeout(() => {
+
+                                    toast.remove();
+
+                                }, 400);
+
+                            }
+
+                        }, 3000);
+                    </script>
+                @endif
+
                 <!-- LOGO -->
                 <div class="flex items-center gap-3 mb-6">
 
@@ -45,7 +106,8 @@
                             Nama Lengkap
                         </label>
 
-                        <input type="text" name="name" placeholder="Masukkan nama lengkap Anda"
+                        <input type="text" name="name" value="{{ old('name') }}"
+                            placeholder="Masukkan nama lengkap Anda"
                             class="w-full rounded-2xl border border-gray-200 px-5 py-4 focus:outline-none focus:ring-2 focus:ring-indigo-400">
 
                     </div>
@@ -98,7 +160,7 @@
                                 Pekerjaan
                             </label>
 
-                            <input type="text" name="job" placeholder="Contoh: Mahasiswa"
+                            <input type="text" name="job" value="{{ old('job') }}" placeholder="Contoh: Mahasiswa"
                                 class="w-full rounded-2xl border border-gray-200 px-5 py-4 focus:outline-none focus:ring-2 focus:ring-indigo-400">
 
                         </div>
@@ -115,7 +177,7 @@
                                 Asal Kota
                             </label>
 
-                            <input type="text" name="city" placeholder="Contoh: Jakarta"
+                            <input type="text" name="city" value="{{ old('city') }}" placeholder="Contoh: Jakarta"
                                 class="w-full rounded-2xl border border-gray-200 px-5 py-4 focus:outline-none focus:ring-2 focus:ring-indigo-400">
 
                         </div>
@@ -127,7 +189,7 @@
                                 Nomor HP
                             </label>
 
-                            <input type="text" name="phone" placeholder="08xx-xxxx-xxxx"
+                            <input type="text" name="phone" value="{{ old('phone') }}" placeholder="08xx-xxxx-xxxx"
                                 class="w-full rounded-2xl border border-gray-200 px-5 py-4 focus:outline-none focus:ring-2 focus:ring-indigo-400">
 
                         </div>
@@ -141,7 +203,7 @@
                             Email
                         </label>
 
-                        <input type="email" name="email" placeholder="nama@email.com"
+                        <input type="email" name="email" value="{{ old('email') }}" placeholder="nama@email.com"
                             class="w-full rounded-2xl border border-gray-200 px-5 py-4 focus:outline-none focus:ring-2 focus:ring-indigo-400">
 
                     </div>
@@ -169,8 +231,6 @@
                             class="w-full rounded-2xl border border-gray-200 px-5 py-4 focus:outline-none focus:ring-2 focus:ring-indigo-400">
 
                     </div>
-
-
 
                     <!-- BUTTON -->
                     <button type="submit"

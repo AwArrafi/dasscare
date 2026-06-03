@@ -7,7 +7,7 @@
         <div class="mb-4">
 
             <h1 class="text-3xl font-bold text-gray-700">
-                Rafi
+                {{ auth()->user()->username }}
             </h1>
 
         </div>
@@ -26,7 +26,6 @@
             </span>
 
         </a>
-
 
         @if (session('success'))
             <div id="success-alert"
@@ -54,6 +53,38 @@
             </script>
         @endif
 
+        @if ($errors->any())
+            <div id="error-alert"
+                class="fixed top-6 right-6 z-50
+        bg-red-500 text-white
+        px-6 py-4 rounded-2xl
+        shadow-2xl
+        transition-all duration-500">
+
+                {{ $errors->first() }}
+
+            </div>
+
+            <script>
+                setTimeout(() => {
+
+                    const alert =
+                        document.getElementById('error-alert');
+
+                    alert.classList.add(
+                        'opacity-0',
+                        'translate-y-2'
+                    );
+
+                    setTimeout(() => {
+
+                        alert.remove();
+
+                    }, 500);
+
+                }, 2500);
+            </script>
+        @endif
         <!-- TOP BANNER -->
         <div
             class="w-full rounded-[30px]

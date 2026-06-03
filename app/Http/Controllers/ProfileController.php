@@ -27,22 +27,37 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        $request->validate([
-            'username' => 'required|string|max:255',
-            'gender' => 'required',
-        ]);
+        $request->validate(
+
+            [
+                'username' => 'required|string|max:255',
+                'gender' => 'required',
+            ],
+
+            [
+                'username.required' => 'Username wajib diisi.',
+                'gender.required' => 'Gender wajib dipilih.',
+            ]
+
+        );
 
         $user->username = $request->username;
         $user->gender = $request->gender;
 
-        // kalau password diisi
-        if ($request->password) {
-            $user->password = Hash::make($request->password);
+        // PASSWORD OPSIONAL
+        if ($request->filled('password')) {
+
+            $user->password = Hash::make(
+                $request->password
+            );
         }
 
         /** @var User $user */
         $user->save();
 
-        return back()->with('success', 'Profile berhasil diperbarui');
+        return back()->with(
+            'success',
+            'Profile berhasil diperbarui.'
+        );
     }
 }
