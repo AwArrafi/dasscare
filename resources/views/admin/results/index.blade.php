@@ -11,7 +11,7 @@
         <!-- TABLE CARD -->
         <div
             class="bg-white rounded-3xl
-            border border-gray-100/80
+            border border-black-100/80
             shadow-[0_2px_8px_rgba(0,0,0,0.03)]
             overflow-hidden">
 
@@ -19,7 +19,7 @@
             <table class="w-full">
 
                 <!-- HEADER -->
-                <thead class="bg-gray-200 border-b border-gray-300">
+                <thead class="bg-gray-200 border-b border-black-200">
 
                     <tr class="text-left text-black-500 text-sm">
 

@@ -9,14 +9,14 @@
         </h1>
 
         <!-- CARD -->
-        <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="bg-white rounded-3xl shadow-sm border border-black-100 overflow-hidden">
 
             <!-- TABLE -->
             <div class="overflow-x-auto">
 
                 <table class="w-full text-sm">
 
-                    <thead class="bg-gray-50 text-gray-500">
+                    <thead class="bg-gray-200 text-black-500">
 
                         <tr>
 
@@ -37,7 +37,7 @@
 
                     <tbody>
 
-                        <tr class="border-t border-gray-100">
+                        <tr class="border-t border-black-100">
 
                             <td class="px-6 py-6">
                                 {{ str_pad($result->id, 5, '0', STR_PAD_LEFT) }}
@@ -94,7 +94,7 @@
             </div>
 
             <!-- CONTENT -->
-            <div class="px-6 pb-8 pt-12 border-t border-gray-100">
+            <div class="px-6 pb-8 pt-12 border-t border-black-100">
 
                 <div class="space-y-8">
 

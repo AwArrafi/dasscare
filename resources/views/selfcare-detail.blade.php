@@ -348,11 +348,40 @@
 
                         </h2>
 
-                        <span class="text-sm text-indigo-500">
 
-                            Lihat Semua
+                        <div class="relative inline-block group">
 
-                        </span>
+                            <button type="button" class="text-sm text-indigo-500
+        cursor-not-allowed">
+
+                                Lihat Semua
+
+                            </button>
+
+                            <!-- TOOLTIP -->
+                            <div
+                                class="absolute left-1/2
+        -translate-x-1/2 top-full mt-3
+
+        opacity-0 invisible
+
+        group-hover:opacity-100
+        group-hover:visible
+
+        transition-all duration-300
+
+        bg-gray-900 text-white text-xs
+        px-4 py-2 rounded-xl
+        shadow-xl
+
+        w-max max-w-[220px]
+        text-center z-50">
+
+                                Coming Soon!
+
+                            </div>
+
+                        </div>
 
                     </div>
 
@@ -395,14 +424,7 @@
 
                                             </h3>
 
-                                            <span
-                                                class="bg-blue-100 text-blue-600
-                                                text-xs px-3 py-1
-                                                rounded-full font-semibold">
 
-                                                MENENGAH
-
-                                            </span>
 
                                         </div>
 
