@@ -444,9 +444,37 @@ class TestController extends Controller
     |--------------------------------------------------------------------------
     */
 
-        $additionalRecommendations = Recommendation::where('id', '!=', $mainRecommendation->id)
-            ->take(3)
-            ->get();
+        $additionalRecommendations = collect([
+            (object) [
+                'title' => 'Depresi',
+                'category' => $result->category_depression,
+                'content' => optional(
+                    Recommendation::where('dimension', 'depression')
+                        ->where('category', $result->category_depression)
+                        ->first()
+                )->content
+            ],
+
+            (object) [
+                'title' => 'Kecemasan',
+                'category' => $result->category_anxiety,
+                'content' => optional(
+                    Recommendation::where('dimension', 'anxiety')
+                        ->where('category', $result->category_anxiety)
+                        ->first()
+                )->content
+            ],
+
+            (object) [
+                'title' => 'Stress',
+                'category' => $result->category_stress,
+                'content' => optional(
+                    Recommendation::where('dimension', 'stress')
+                        ->where('category', $result->category_stress)
+                        ->first()
+                )->content
+            ]
+        ]);
 
 
         $colorDepresi = $this->getProgressColor(

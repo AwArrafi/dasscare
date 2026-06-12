@@ -15,7 +15,7 @@
 
             <h1 class="text-4xl font-bold text-indigo-600">
 
-                120
+                {{ $totalUsers }}
 
             </h1>
 
@@ -32,8 +32,7 @@
 
             <h1 class="text-4xl font-bold text-indigo-600">
 
-                540
-
+                {{ $totalTests }}
             </h1>
 
         </div>
@@ -49,8 +48,7 @@
 
             <h1 class="text-4xl font-bold text-indigo-600">
 
-                24
-
+                {{ $totalRecommendations }}
             </h1>
 
         </div>
@@ -104,28 +102,14 @@
 
                 data: {
 
-                    labels: [
-                        'Jan',
-                        'Feb',
-                        'Mar',
-                        'Apr',
-                        'Mei',
-                        'Jun'
-                    ],
+                    labels: @json($months),
 
                     datasets: [
 
                         {
                             label: 'Jumlah Tes',
 
-                            data: [
-                                20,
-                                35,
-                                28,
-                                42,
-                                50,
-                                38
-                            ],
+                            data: @json($monthlyTests),
 
                             backgroundColor: '#4F46E5',
                             borderRadius: 12
@@ -205,14 +189,7 @@
 
                 data: {
 
-                    labels: [
-                        'Jan',
-                        'Feb',
-                        'Mar',
-                        'Apr',
-                        'Mei',
-                        'Jun'
-                    ],
+                    labels: @json($months),
 
                     datasets: [
 
@@ -220,14 +197,7 @@
 
                             label: 'User',
 
-                            data: [
-                                10,
-                                18,
-                                25,
-                                32,
-                                48,
-                                60
-                            ],
+                            data: @json($monthlyUsers),
 
                             borderColor: '#4F46E5',
 

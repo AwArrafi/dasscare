@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AdminResultController;
 use App\Http\Controllers\Admin\SelfCareController;
+use App\Http\Controllers\Admin\AdminDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,10 +85,7 @@ Route::middleware(['auth', 'admin'])
     ->group(function () {
 
         // DASHBOARD
-        Route::get('/', function () {
-
-            return view('admin.dashboard');
-        });
+        Route::get('/', [AdminDashboardController::class, 'index']);
 
         // DATA RIWAYAT
         Route::get('/results', [AdminResultController::class, 'index']);

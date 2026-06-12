@@ -1,6 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+    @php
+
+        $badgeClass = match ($priorityRule['color']) {
+            'green' => 'bg-green-100 text-green-700',
+
+            'yellow' => 'bg-yellow-100 text-yellow-700',
+
+            'red' => 'bg-red-100 text-red-700',
+
+            'blue' => 'bg-blue-100 text-blue-700',
+
+            default => 'bg-gray-100 text-gray-700',
+        };
+
+    @endphp
     <div class="min-h-screen py-8 md:py-14 px-4 md:px-6">
 
         <!-- CONTAINER -->
@@ -191,17 +206,9 @@
 
                             </h3>
 
-                            <span
-                                class="px-3 py-1 rounded-full
-                                text-xs font-semibold
-
-                                @if ($priorityRule['color'] === 'red') bg-red-100 text-red-600
-                                @elseif ($priorityRule['color'] === 'yellow')
-                                    bg-yellow-100 text-yellow-700
-                                @elseif ($priorityRule['color'] === 'green')
-                                    bg-green-100 text-green-700
-                                @else
-                                    bg-blue-100 text-blue-700 @endif">
+                            <span class="{{ $badgeClass }}
+    px-3 py-1 rounded-full
+    text-xs font-semibold">
 
                                 {{ $priorityRule['badge'] }}
 
@@ -239,9 +246,9 @@
 
                         </h2>
 
-                        <span
-                            class="bg-red-100 text-red-600
-                            text-xs px-3 py-1 rounded-full font-semibold">
+                        <span class="{{ $badgeClass }}
+    text-xs px-3 py-1 rounded-full
+    font-semibold">
 
                             {{ $priorityRule['badge'] }}
 
@@ -420,7 +427,7 @@
 
                                             <h3 class="font-semibold text-gray-800">
 
-                                                {{ $recommendation->category }}
+                                                {{ $recommendation->title }}
 
                                             </h3>
 
@@ -428,9 +435,15 @@
 
                                         </div>
 
-                                        <p
-                                            class="text-gray-500
-                                            text-sm leading-relaxed">
+                                        <p class="text-sm font-medium text-indigo-500 mb-2">
+
+                                            Kategori:
+                                            {{ $recommendation->category }}
+
+                                        </p>
+
+                                        <p class="text-gray-500
+    text-sm leading-relaxed">
 
                                             {{ $recommendation->content }}
 

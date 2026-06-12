@@ -13,7 +13,7 @@
             </h1>
 
             <a href="{{ route('self-care.create') }}"
-                class="bg-indigo-600 hover:bg-indigo-700 transition text-white px-5 py-3 rounded-2xl shadow-sm font-medium">
+                class="bg-blue-500 hover:bg-blue-600 transition text-white px-5 py-3 rounded-2xl shadow-sm font-medium">
 
                 + Tambah Rekomendasi
 
@@ -32,16 +32,16 @@
         @endif
 
         <!-- CARD -->
-        <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="bg-white rounded-3xl shadow-sm border border-black overflow-hidden">
 
             <!-- TABLE -->
             <div class="overflow-x-auto">
 
                 <table class="w-full text-sm">
 
-                    <thead class="bg-gray-50 text-gray-500">
+                    <thead class="bg-gray-200 border-b border-black text-black">
 
-                        <tr>
+                        <tr class="border-b border-black">
 
                             <th class="px-6 py-5 text-left">ID</th>
 
