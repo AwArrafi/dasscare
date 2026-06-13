@@ -33,7 +33,11 @@
 
 <body class="bg-white font-sans">
 
-    @if (!request()->is('login') && !request()->is('register'))
+    @if (
+        !request()->is('login') &&
+            !request()->is('register') &&
+            !request()->is('forgot-password') &&
+            !request()->is('reset-password/*'))
         <x-navbar />
     @endif
 

@@ -1,49 +1,103 @@
 @extends('layouts.app')
 @section('content')
     <!-- HERO SECTION -->
-    <section class="max-w-6xl mx-auto
-    flex items-center justify-between
+    <!-- HERO SECTION -->
+    <section
+        class="max-w-6xl mx-auto
+    flex flex-col md:flex-row
+    items-center justify-between
     px-6
-    pt-10
-    pb-2">
+    pt-8 md:pt-12
+    pb-8">
 
-        <div class="max-wxl">
-            <h1 class="text-3xl font-semibold leading-tight">
-                Selamat Datang di Platform Screening Awal <br>
+        <!-- TEXT -->
+        <div class="w-full md:max-w-xl
+        text-center md:text-left">
+
+            <h1 class="text-2xl sm:text-3xl md:text-5xl
+    font-semibold
+    leading-snug md:leading-tight">
+
+                Selamat Datang di Platform Screening Awal
                 Kesehatan Mental Berbasis
-                <span class="text-indigo-600 font-bold whitespace-nowrap">
+
+                <span class="block mt-2
+        text-indigo-600
+        font-bold">
+
                     DASS - 21
+
                 </span>
+
             </h1>
 
-            <h2 class="mt-6 text-xl text-indigo-600 font-semibold">
+            <h2 class="mt-8
+            text-xl
+            text-indigo-600
+            font-semibold">
+
                 Apa itu DASS-21?
+
             </h2>
 
-            <p class="mt-3 text-gray-600 text-sm leading-relaxed max-w-xl">
-                DASS-21 adalah alat asesmen mandiri yang dirancang untuk mengukur tiga aspek utama kondisi psikologis
-                seseorang,
-                yaitu depresi, kecemasan, dan stres. Instrumen ini terdiri dari 21 pernyataan yang membantu pengguna
-                mengenali
-                keadaan emosional yang sedang dialami.
+            <p
+                class="mt-3
+            text-gray-600
+            text-sm md:text-base
+            leading-relaxed
+            max-w-xl
+            mx-auto md:mx-0">
+
+                DASS-21 adalah alat asesmen mandiri yang dirancang untuk mengukur
+                tiga aspek utama kondisi psikologis seseorang, yaitu depresi,
+                kecemasan, dan stres. Instrumen ini terdiri dari 21 pernyataan yang
+                membantu pengguna mengenali keadaan emosional yang sedang dialami.
+
             </p>
 
             <a href="/petunjuk"
-                class="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-indigo-600 text-white rounded-xl shadow hover:bg-indigo-700 transition">
+                class="inline-flex items-center justify-center gap-2
+
+            w-full sm:w-auto
+
+            mt-8
+
+            px-8 py-4
+
+            bg-indigo-600
+            text-white
+
+            rounded-2xl
+
+            shadow-lg
+
+            hover:bg-indigo-700
+
+            transition">
+
                 Lakukan tes kesehatan mental →
+
             </a>
 
-            <p class="text-xs text-gray-400 mt-4">
-                Catatan: Hasil dari kuesioner ini bukanlah diagnosis medis, melainkan indikasi awal.
+            <p class="text-xs
+            text-gray-400
+            mt-4">
+
+                Catatan: Hasil dari kuesioner ini bukanlah diagnosis medis,
+                melainkan indikasi awal.
+
             </p>
+
         </div>
 
-        <div>
-            <img src="/images/hero.png" class="w-[350px]">
+        <!-- HERO IMAGE -->
+        <div class="hidden md:block">
+
+            <img src="/images/hero.png" class="w-[350px] lg:w-[420px]" alt="Hero">
+
         </div>
 
     </section>
-
     <!-- FACT + FOOTER -->
     <section class="bg-gray-100 mt-2">
 

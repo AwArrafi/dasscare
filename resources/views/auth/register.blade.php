@@ -74,6 +74,9 @@
                     </script>
                 @endif
 
+
+                </a>
+
                 <!-- LOGO -->
                 <div class="flex items-center gap-3 mb-6">
 
