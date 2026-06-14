@@ -9,13 +9,34 @@ use App\Models\Recommendation;
 
 class AdminResultController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $results = Result::with('user')->latest()->paginate(5);
+        $results = \App\Models\Result::with('user')
+            ->when($request->search, function ($query) use ($request) {
+                $query->whereHas('user', function ($userQuery) use ($request) {
+                    $userQuery->where('name', 'like', '%' . $request->search . '%')
+                        ->orWhere('username', 'like', '%' . $request->search . '%')
+                        ->orWhere('email', 'like', '%' . $request->search . '%');
+                });
+            })
+            ->when($request->depression_category, function ($query) use ($request) {
+                $query->where('category_depression', $request->depression_category);
+            })
+            ->when($request->anxiety_category, function ($query) use ($request) {
+                $query->where('category_anxiety', $request->anxiety_category);
+            })
+            ->when($request->stress_category, function ($query) use ($request) {
+                $query->where('category_stress', $request->stress_category);
+            })
+            ->when($request->date, function ($query) use ($request) {
+                $query->whereDate('created_at', $request->date);
+            })
+            ->latest()
+            ->paginate(5)
+            ->withQueryString();
 
         return view('admin.results.index', compact('results'));
     }
-
 
 
     public function show($id)

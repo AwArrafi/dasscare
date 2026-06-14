@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
     <!-- HERO SECTION -->
-    <!-- HERO SECTION -->
     <section
         class="max-w-6xl mx-auto
     flex flex-col md:flex-row

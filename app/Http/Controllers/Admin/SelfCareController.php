@@ -11,9 +11,23 @@ class SelfCareController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $recommendations = Recommendation::latest()->paginate(10);
+        $recommendations = Recommendation::query()
+            ->when($request->search, function ($query) use ($request) {
+                $query->where('content', 'like', '%' . $request->search . '%')
+                    ->orWhere('dimension', 'like', '%' . $request->search . '%')
+                    ->orWhere('category', 'like', '%' . $request->search . '%');
+            })
+            ->when($request->dimension, function ($query) use ($request) {
+                $query->where('dimension', $request->dimension);
+            })
+            ->when($request->category, function ($query) use ($request) {
+                $query->where('category', $request->category);
+            })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
 
         return view('admin.self-care.index', compact('recommendations'));
     }
