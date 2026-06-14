@@ -9,17 +9,30 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        if (!Auth::check()) {
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            return redirect('/login');
+        }
+
         $user = Auth::user();
 
-        // ADMIN
-        if ($user->role == 'admin') {
+        if (!$user) {
+            Auth::logout();
 
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            return redirect('/login');
+        }
+
+        if ($user->role == 'admin') {
             return view('admin.profile', compact('user'));
         }
 
-        // USER BIASA
         return view('profile', compact('user'));
     }
 

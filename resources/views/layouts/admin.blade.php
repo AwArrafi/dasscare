@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
 
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class="bg-[#F5F6FA] font-sans">
@@ -14,16 +14,13 @@
     <div class="flex min-h-screen">
 
         <!-- SIDEBAR -->
-        <aside class="w-64 bg-white border-r border-gray-200 flex flex-col">
+        <aside style="background-color: #4A3388;" class="w-64 border-r border-white/10 flex flex-col shadow-sm">
 
             <!-- LOGO -->
-            <div class="px-8 py-8 border-b border-gray-100">
+            <div class="px-8 py-8">
 
-                <h1 class="text-3xl font-bold text-black-600 leading-tight">
-
-                    Admin <br>
-                    Psikologi
-
+                <h1 class="text-3xl font-bold text-white leading-tight tracking-wide">
+                    ADMIN
                 </h1>
 
             </div>
@@ -35,9 +32,8 @@
 
                     <!-- DASHBOARD -->
                     <a href="/admin"
-                        class="block px-5 py-4 rounded-2xl transition font-medium
-
-   {{ request()->is('admin') ? 'bg-indigo-600 text-white shadow' : 'text-gray-700 hover:bg-gray-100' }}">
+                        class="block px-5 py-4 rounded-2xl transition font-semibold
+                       {{ request()->is('admin') ? 'bg-white text-[#4A3388] shadow-sm' : 'text-white hover:bg-white/15' }}">
 
                         Dashboard
 
@@ -45,9 +41,8 @@
 
                     <!-- RIWAYAT -->
                     <a href="/admin/results"
-                        class="block px-5 py-4 rounded-2xl transition font-medium
-
-   {{ request()->is('admin/results*') ? 'bg-indigo-600 text-white shadow' : 'text-gray-700 hover:bg-gray-100' }}">
+                        class="block px-5 py-4 rounded-2xl transition font-semibold
+                        {{ request()->is('admin/results*') ? 'bg-white text-[#4A3388] shadow-sm' : 'text-white hover:bg-white/15' }}">
 
                         Data Riwayat Tes
 
@@ -55,30 +50,30 @@
 
                     <!-- SELF CARE -->
                     <a href="/admin/self-care"
-                        class="block px-5 py-4 rounded-2xl transition font-medium
-
-   {{ request()->is('admin/self-care*') ? 'bg-indigo-600 text-white shadow' : 'text-gray-700 hover:bg-gray-100' }}">
+                        class="block px-5 py-4 rounded-2xl transition font-semibold
+                       {{ request()->is('admin/self-care*') ? 'bg-white text-[#4A3388] shadow-sm' : 'text-white hover:bg-white/15' }}">
 
                         Self-Care
 
                     </a>
+
                 </div>
 
             </nav>
 
             <!-- LOGOUT -->
-            <div class="p-4 border-t border-gray-100">
-
+            <div class="p-4">
                 <form action="/logout" method="POST">
 
                     @csrf
 
                     <button type="submit"
                         class="w-full flex items-center justify-center gap-2
-                               px-4 py-3 rounded-xl
-                               bg-red-500 text-white
-                               hover:bg-red-600
-                               transition">
+                        px-4 py-3 rounded-xl
+                        bg-white text-red-500
+                        hover:bg-red-50
+                        font-semibold
+                        transition">
 
                         Logout
 
@@ -94,14 +89,13 @@
         <div class="flex-1 flex flex-col">
 
             <!-- TOPBAR -->
-            <header class="bg-white border-b border-gray-200 px-10 py-5">
-
+            <header style="background-color: #4A3388;" class=" px-10 py-5 shadow-sm">
                 <div class="flex items-center justify-between">
 
                     <!-- TITLE -->
                     <div>
-                        <h2 class="text-2xl font-bold text-gray-800">
-                            Dashboard
+                        <h2 class="text-2xl font-bold text-white">
+                            DASHBOARD
                         </h2>
                     </div>
 
@@ -109,27 +103,19 @@
                     <div class="relative group">
 
                         <!-- BUTTON -->
-                        <button
-                            class="flex items-center gap-4
-               hover:bg-gray-100
-               px-3 py-2 rounded-xl
-               transition">
+                        <button class="flex items-center gap-4 hover:bg-white/15 px-3 py-2 rounded-xl transition">
 
                             <!-- AVATAR -->
                             <img src="/images/admin-profile.jpg"
-                                class="w-12 h-12 rounded-full object-cover border-2 border-indigo-200">
+                                class="w-12 h-12 rounded-full object-cover border-2 border-white/40"
+                                alt="Admin Profile">
 
                             <!-- INFO -->
                             <div class="text-right">
 
-                                <h3 class="font-semibold text-gray-800">
-                                    {{ Auth::user()->name }}
+                                <h3 class="font-semibold text-white">
+                                    {{ Auth::user()->name ?? 'Admin' }}
                                 </h3>
-
-                                <p class="text-sm text-gray-400">
-                                    Administrator
-                                </p>
-
                             </div>
 
                         </button>
@@ -137,22 +123,22 @@
                         <!-- DROPDOWN -->
                         <div
                             class="absolute right-0 mt-2 w-48
-               bg-white rounded-2xl shadow-xl
-               border border-gray-100
-               opacity-0 invisible
-               group-hover:opacity-100
-               group-hover:visible
-               transition-all duration-200 z-50">
+                            bg-white rounded-2xl shadow-xl
+                            border border-gray-100
+                            opacity-0 invisible
+                            group-hover:opacity-100
+                            group-hover:visible
+                            transition-all duration-200 z-50">
 
                             <!-- MENU -->
                             <div class="p-2">
 
-                                <a href="#"
+                                <a href="/profile"
                                     class="block px-4 py-3 rounded-xl
-                      text-gray-700
-                      hover:bg-indigo-50
-                      hover:text-indigo-600
-                      transition">
+                                    text-gray-700
+                                    hover:bg-purple-50
+                                    hover:text-purple-700
+                                    transition">
 
                                     👤 Profile
 
@@ -164,9 +150,9 @@
 
                                     <button type="submit"
                                         class="w-full text-left px-4 py-3 rounded-xl
-                           text-red-500
-                           hover:bg-red-50
-                           transition">
+                                        text-red-500
+                                        hover:bg-red-50
+                                        transition">
 
                                         🚪 Logout
 

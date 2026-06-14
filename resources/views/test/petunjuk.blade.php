@@ -9,16 +9,18 @@
         py-8 lg:pt-6">
 
         <!-- LEFT CARD -->
-        <div
-            class="bg-gray-100
-            p-6 md:p-8 lg:p-10
+        <div style="background-color: #9A7ADF;"
+            class="p-6 md:p-8 lg:p-10
             rounded-[32px] lg:rounded-[40px]
-            max-w-lg w-full">
+            max-w-lg w-full
+            shadow-[0_12px_30px_rgba(74,51,136,0.18)]">
 
             <!-- TITLE -->
-            <h2 class="text-xl md:text-2xl
+            <h2
+                class="text-xl md:text-2xl
                 font-semibold text-center
-                mb-4 tracking-wide">
+                mb-4 tracking-wide
+                text-white">
 
                 PETUNJUK PENGISIAN
 
@@ -27,7 +29,7 @@
             <!-- DESCRIPTION -->
             <p
                 class="text-sm md:text-[15px]
-                text-gray-600
+                text-white/85
                 leading-7
                 text-center
                 max-w-md mx-auto
@@ -45,13 +47,13 @@
                 <div
                     class="bg-white rounded-2xl
                     p-4 flex items-center gap-3
-                    shadow-sm border border-gray-100">
+                    shadow-sm border border-white/40">
 
-                    <div
+                    <div style="background-color: #4A3388;"
                         class="min-w-[40px] w-10 h-10
                         flex items-center justify-center
-                        bg-indigo-200 rounded-full
-                        font-bold text-indigo-700">
+                        rounded-full
+                        font-bold text-white">
 
                         0
 
@@ -59,7 +61,7 @@
 
                     <div>
 
-                        <p class="text-sm font-semibold">
+                        <p class="text-sm font-semibold text-gray-800">
 
                             Tidak Sama sekali
 
@@ -79,13 +81,13 @@
                 <div
                     class="bg-white rounded-2xl
                     p-4 flex items-center gap-3
-                    shadow-sm border border-gray-100">
+                    shadow-sm border border-white/40">
 
-                    <div
+                    <div style="background-color: #4A3388;"
                         class="min-w-[40px] w-10 h-10
                         flex items-center justify-center
-                        bg-indigo-200 rounded-full
-                        font-bold text-indigo-700">
+                        rounded-full
+                        font-bold text-white">
 
                         1
 
@@ -93,7 +95,7 @@
 
                     <div>
 
-                        <p class="text-sm font-semibold">
+                        <p class="text-sm font-semibold text-gray-800">
 
                             Sampai di tingkat tertentu
 
@@ -113,13 +115,13 @@
                 <div
                     class="bg-white rounded-2xl
                     p-4 flex items-center gap-3
-                    shadow-sm border border-gray-100">
+                    shadow-sm border border-white/40">
 
-                    <div
+                    <div style="background-color: #4A3388;"
                         class="min-w-[40px] w-10 h-10
                         flex items-center justify-center
-                        bg-indigo-200 rounded-full
-                        font-bold text-indigo-700">
+                        rounded-full
+                        font-bold text-white">
 
                         2
 
@@ -127,7 +129,7 @@
 
                     <div>
 
-                        <p class="text-sm font-semibold">
+                        <p class="text-sm font-semibold text-gray-800">
 
                             Lumayan Sering
 
@@ -147,13 +149,13 @@
                 <div
                     class="bg-white rounded-2xl
                     p-4 flex items-center gap-3
-                    shadow-sm border border-gray-100">
+                    shadow-sm border border-white/40">
 
-                    <div
+                    <div style="background-color: #4A3388;"
                         class="min-w-[40px] w-10 h-10
                         flex items-center justify-center
-                        bg-indigo-200 rounded-full
-                        font-bold text-indigo-700">
+                        rounded-full
+                        font-bold text-white">
 
                         3
 
@@ -161,7 +163,7 @@
 
                     <div>
 
-                        <p class="text-sm font-semibold">
+                        <p class="text-sm font-semibold text-gray-800">
 
                             Sangat sesuai
 
@@ -182,11 +184,11 @@
             <!-- DIVIDER INFO -->
             <div
                 class="flex items-center justify-center
-                bg-gray-200 rounded-full
+                bg-white rounded-full
                 px-4 md:px-6 py-3
                 mt-8 text-sm tracking-wide">
 
-                <span class="pr-4 md:pr-6 text-gray-700">
+                <span class="pr-4 md:pr-6 text-black font-medium">
 
                     Pilihan Ganda
 
@@ -194,7 +196,7 @@
 
                 <div class="w-[2px] h-6 bg-gray-300"></div>
 
-                <span class="pl-4 md:pl-6 text-gray-700">
+                <span class="pl-4 md:pl-6 text-black font-medium">
 
                     21 Pertanyaan
 
@@ -203,11 +205,10 @@
             </div>
 
             <!-- BUTTON -->
-            <a href="/tes/1"
+            <a href="/tes/1" style="background-color: #4A3388;"
                 class="block text-center
                 mt-8 py-4 rounded-full
-                bg-gradient-to-r from-indigo-400 to-indigo-600
-                text-black font-bold tracking-wide
+                text-white font-bold tracking-wide
                 shadow-md hover:opacity-90 transition
                 text-sm md:text-base">
 

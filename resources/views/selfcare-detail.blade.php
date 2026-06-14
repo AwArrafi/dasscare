@@ -235,7 +235,7 @@
                 <!-- PRIORITAS UTAMA -->
                 <div
                     class="bg-white rounded-3xl p-6
-                    border border-red-200
+                    border border-gray-200
                     shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
 
                     <div class="flex justify-between items-start mb-6">

@@ -5,21 +5,21 @@
         min-h-[75vh]
         px-4 py-8">
 
-        <div
-            class="bg-gray-200
-            rounded-[32px] md:rounded-[40px]
+        <div style="background-color: #9A7ADF;"
+            class="rounded-[32px] md:rounded-[40px]
             px-5 md:px-10
             py-8 md:py-10
-            w-full max-w-2xl text-center">
+            w-full max-w-2xl text-center
+            shadow-[0_12px_30px_rgba(74,51,136,0.18)]">
 
             @if ($step > 1)
                 <div class="flex justify-start mb-4">
 
                     <a href="/tes/{{ $step - 1 }}"
                         class="inline-flex items-center gap-2
-            text-gray-500
-            hover:text-indigo-600
-            transition">
+                        text-white/80
+                        hover:text-white
+                        transition">
 
                         ← Kembali
 
@@ -30,7 +30,7 @@
 
             <!-- STEP -->
             <p class="text-sm md:text-base
-                font-bold text-black mb-3">
+                font-bold text-white mb-3">
 
                 Pertanyaan {{ $step }}/{{ $total }}
 
@@ -42,7 +42,8 @@
                 font-medium
                 leading-relaxed
                 mb-8
-                max-w-xl mx-auto">
+                max-w-xl mx-auto
+                text-white">
 
                 {{ $question->text }}
 
@@ -62,21 +63,20 @@
 
                             <input type="radio" name="value" value="{{ $val }}" class="hidden peer">
 
-                            <div
-                                class="bg-white
+                            <div class="bg-white
                                 py-4 md:py-5
                                 px-5
                                 rounded-full
                                 shadow-sm
-                                border border-transparent
+                                border border-white/40
                                 text-sm md:text-lg
                                 font-medium
-                                hover:border-indigo-300
+                                text-gray-700
+                                hover:bg-purple-50
                                 hover:shadow-md
-                                peer-checked:bg-indigo-500
                                 peer-checked:text-white
-                                peer-checked:border-indigo-500
-                                transition-all duration-300">
+                                transition-all duration-300"
+                                onclick="this.style.backgroundColor='#4A3388'">
 
                                 {{ $label }}
 
@@ -88,17 +88,18 @@
                 </div>
 
                 <!-- BUTTON -->
-                <button type="submit"
+                <button type="submit" style="background-color: #4A3388;"
                     class="mt-8
                     w-full md:w-auto
                     px-8 md:px-10
                     py-3 md:py-4
-                    bg-indigo-600 text-white
+                    text-white
                     rounded-full
                     font-medium
                     text-sm md:text-base
                     opacity-50 cursor-not-allowed
-                    transition-all duration-300"
+                    transition-all duration-300
+                    hover:opacity-90"
                     id="btnNext" disabled>
 
                     Selanjutnya
@@ -115,10 +116,8 @@
         const radios = document.querySelectorAll('input[name="value"]');
         const btn = document.getElementById('btnNext');
 
-        radios.forEach(r => {
-
-            r.addEventListener('change', () => {
-
+        radios.forEach(radio => {
+            radio.addEventListener('change', () => {
                 btn.disabled = false;
 
                 btn.classList.remove(
@@ -126,8 +125,24 @@
                     'cursor-not-allowed'
                 );
 
-            });
+                btn.classList.add(
+                    'cursor-pointer'
+                );
 
+                document.querySelectorAll('input[name="value"]').forEach(input => {
+                    const optionBox = input.nextElementSibling;
+
+                    if (input.checked) {
+                        optionBox.style.backgroundColor = '#4A3388';
+                        optionBox.style.color = '#ffffff';
+                        optionBox.style.borderColor = '#4A3388';
+                    } else {
+                        optionBox.style.backgroundColor = '#ffffff';
+                        optionBox.style.color = '#374151';
+                        optionBox.style.borderColor = 'rgba(255,255,255,0.4)';
+                    }
+                });
+            });
         });
     </script>
 @endsection
